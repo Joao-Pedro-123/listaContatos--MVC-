@@ -1,3 +1,10 @@
+<html> 
+	<head> 
+		<meta charset="UTF-8">
+		<title> MVC </title>
+	</head>
+	<body> 
+
 <?php
     include_once("conexao.php");
 
@@ -13,3 +20,6 @@
         }
     }
 ?>
+
+</body>
+</html>
