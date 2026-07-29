@@ -9,7 +9,7 @@
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-@@ -18,71 +18,13 @@ SET time_zone = "+00:00";
+SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
@@ -81,7 +81,7 @@ CREATE TABLE `rede_social` (
 --
 
 CREATE TABLE `telefone` (
-@@ -93,101 +35,40 @@ CREATE TABLE `telefone` (
+CREATE TABLE `telefone` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
