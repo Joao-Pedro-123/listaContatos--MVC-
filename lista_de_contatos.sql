@@ -1,24 +1,19 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.3-2.fc44
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jun 24, 2026 at 12:41 AM
--- Server version: 11.8.6-MariaDB
--- PHP Version: 8.5.7
+-- Host: 127.0.0.1
+-- Tempo de geração: 28/07/2026 às 00:07
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `lista_de_contatos`
+-- Banco de dados: `lista_de_contatos`
 --
 
 -- --------------------------------------------------------
@@ -82,18 +77,14 @@ CREATE TABLE `rede_social` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `telefone`
+-- Estrutura para tabela `telefone`
 --
 
 CREATE TABLE `telefone` (
-  `id_telefone` int(11) NOT NULL,
-  `id_contato` int(11) NOT NULL,
-  `telefone` varchar(15) NOT NULL,
-  `obs` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indexes for dumped tables
+-- Despejando dados para a tabela `telefone`
 --
 
 --
@@ -115,16 +106,19 @@ ALTER TABLE `email`
 ALTER TABLE `endereco`
   ADD PRIMARY KEY (`id_endereco`),
   ADD KEY `id_contato` (`id_contato`);
+INSERT INTO `telefone` (`id_telefone`, `id_contato`, `telefone`, `obs`) VALUES
+(1, 1, '+5517987219873', 'Telefone pessoal'),
+(2, 2, '+5511972838917', 'Telefone pessoal');
 
 --
--- Indexes for table `rede_social`
+-- Índices para tabelas despejadas
 --
 ALTER TABLE `rede_social`
   ADD PRIMARY KEY (`id_rede_social`),
   ADD KEY `id_contato` (`id_contato`);
 
 --
--- Indexes for table `telefone`
+-- Índices de tabela `telefone`
 --
 ALTER TABLE `telefone`
   ADD PRIMARY KEY (`id_telefone`),
@@ -148,6 +142,7 @@ ALTER TABLE `email`
 
 --
 -- AUTO_INCREMENT for table `endereco`
+-- AUTO_INCREMENT para tabelas despejadas
 --
 ALTER TABLE `endereco`
   MODIFY `id_endereco` int(11) NOT NULL AUTO_INCREMENT;
@@ -160,6 +155,7 @@ ALTER TABLE `rede_social`
 
 --
 -- AUTO_INCREMENT for table `telefone`
+-- AUTO_INCREMENT de tabela `telefone`
 --
 ALTER TABLE `telefone`
   MODIFY `id_telefone` int(11) NOT NULL AUTO_INCREMENT;
@@ -179,20 +175,16 @@ ALTER TABLE `email`
 --
 ALTER TABLE `endereco`
   ADD CONSTRAINT `endereco_ibfk_1` FOREIGN KEY (`id_contato`) REFERENCES `contato` (`id_contato`);
+  MODIFY `id_telefone` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Constraints for table `rede_social`
+-- Restrições para tabelas despejadas
 --
 ALTER TABLE `rede_social`
   ADD CONSTRAINT `rede_social_ibfk_1` FOREIGN KEY (`id_contato`) REFERENCES `contato` (`id_contato`);
 
 --
--- Constraints for table `telefone`
+-- Restrições para tabelas `telefone`
 --
 ALTER TABLE `telefone`
   ADD CONSTRAINT `telefone_ibfk_1` FOREIGN KEY (`id_contato`) REFERENCES `contato` (`id_contato`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
