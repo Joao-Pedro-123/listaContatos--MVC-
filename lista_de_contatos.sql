@@ -10,11 +10,6 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
 --
@@ -118,16 +113,31 @@ INSERT INTO `rede_social` (`id_rede_social`, `id_contato`, `link`, `nome_rede_so
 --
 
 CREATE TABLE `telefone` (
-  `id_telefone` int(11) NOT NULL,
-  `id_contato` int(11) NOT NULL,
-  `telefone` varchar(15) NOT NULL,
-  `obs` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `telefone`
 --
 
+--
+-- Indexes for table `contato`
+--
+ALTER TABLE `contato`
+  ADD PRIMARY KEY (`id_contato`);
+
+--
+-- Indexes for table `email`
+--
+ALTER TABLE `email`
+  ADD PRIMARY KEY (`id_email`),
+  ADD KEY `id_contato` (`id_contato`);
+
+--
+-- Indexes for table `endereco`
+--
+ALTER TABLE `endereco`
+  ADD PRIMARY KEY (`id_endereco`),
+  ADD KEY `id_contato` (`id_contato`);
 INSERT INTO `telefone` (`id_telefone`, `id_contato`, `telefone`, `obs`) VALUES
 (1, 1, '+5517987219873', 'Telefone pessoal'),
 (2, 2, '+5511972838917', 'Telefone pessoal');
@@ -171,6 +181,23 @@ ALTER TABLE `telefone`
   ADD KEY `id_contato` (`id_contato`);
 
 --
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `contato`
+--
+ALTER TABLE `contato`
+  MODIFY `id_contato` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `email`
+--
+ALTER TABLE `email`
+  MODIFY `id_email` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `endereco`
 -- AUTO_INCREMENT para tabelas despejadas
 --
 
@@ -202,6 +229,23 @@ ALTER TABLE `rede_social`
 -- AUTO_INCREMENT de tabela `telefone`
 --
 ALTER TABLE `telefone`
+  MODIFY `id_telefone` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `email`
+--
+ALTER TABLE `email`
+  ADD CONSTRAINT `email_ibfk_1` FOREIGN KEY (`id_contato`) REFERENCES `contato` (`id_contato`);
+
+--
+-- Constraints for table `endereco`
+--
+ALTER TABLE `endereco`
+  ADD CONSTRAINT `endereco_ibfk_1` FOREIGN KEY (`id_contato`) REFERENCES `contato` (`id_contato`);
   MODIFY `id_telefone` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
@@ -231,8 +275,3 @@ ALTER TABLE `rede_social`
 --
 ALTER TABLE `telefone`
   ADD CONSTRAINT `telefone_ibfk_1` FOREIGN KEY (`id_contato`) REFERENCES `contato` (`id_contato`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
