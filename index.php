@@ -8,11 +8,11 @@
 <h1>Select (Read)</h1>
 
 <?php
-include_once("conexao.php"); //Com este comando nós podemos utiliza a variável $conexão disponpivel no arquivo "conexão.php"
+include_once("conexao.php"); //Com este comando nós podemos utiliza a variável $conexão disponpivel no arquivo "conexão.php" e importar dentro das funções com 'global $conexao'
 ?>
 
 <?php
-    function select(){
+    function read(){
         global $conexao; // Pega a variável definida no escopo global pelo include_once("conexao.php");
         
         $query = "SELECT * FROM contato, email"; //Uma query que segue o padrão de escrita do SQL
@@ -34,7 +34,7 @@ include_once("conexao.php"); //Com este comando nós podemos utiliza a variável
         }
     }
 
-    select();
+    read();
 ?>
 
 <h1>Insert (Create)</h1>
@@ -73,9 +73,42 @@ include_once("conexao.php"); //Com este comando nós podemos utiliza a variável
         return $resultado;
     }
     
-    create("email", [1, 'paulo-victor@gut', 'envie apenas documentos .ods'])
+    echo "Descomente esse código para rodar a função:"
+    //create("email", [1, 'paulo-victor@gut', 'envie apenas documentos .ods'])
 ?>
 
+<h1>Update</h1>
+<?php
+function update($tabela, $atualizacoes, $condicao){
+    global $conexao;
+
+    # Prepara as atualizações
+    $atualizacoes_formatadas = [];
+    
+    foreach ($atualizacoes as $key => $value) {
+        # Gemini me ensinou essa sintaxe legal []
+        $atualizacoes_formatadas[] = "`$key` = '$value'";
+    }
+
+    # Coloca vírgulas pra separar
+    $atualizacoes_formatadas = implode(', ', $atualizacoes_formatadas);
+
+
+    $query = "UPDATE `$tabela` SET $atualizacoes_formatadas WHERE `$tabela`.$condicao;";
+    echo $query;
+
+    $resultado = mysqli_query($conexao, $query);
+    echo $resultado;
+}
+update("contato", ['apelido' => 'Ulisses', 'data_nasc' => '2016-08-31'], '`id_contato` = 3');
+
+
+?>
+
+
+<h1>Delete</h1>
+
+<!-- "DELETE FROM email WHERE `email`.`id_email` = 5" -->
 
 </body>
 </html>
