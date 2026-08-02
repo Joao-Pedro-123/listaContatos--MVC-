@@ -5,7 +5,7 @@
 	</head>
 	<body> 
 
-<h1>Select</h1>
+<h1>Select (Read)</h1>
 
 <?php
     include_once("conexao.php"); //Com este comando nós podemos utiliza a variável $conexão disponpivel no arquivo "conexão.php"
@@ -29,7 +29,24 @@
     }
 ?>
 
-<h1>Select</h1>
+<h1>Insert (Create)</h1>
+<?php
+    include_once("conexao.php");
+
+    # Variáveis da query (argumentos da função php)
+    # Essa mesma função vai servir para fazer insert em todas as colunas
+    $tabela = "contatos";
+    $valores = ['meu-nome', '4877,9,7,8', 'casa'];
+    $colunas = ['telefone', 'nome', 'tipo'];
+    
+    # Variáveis formatadas (corpo da função):
+    $valores = implode("`, `", $valores);
+    $colunas = implode("`, `", $colunas);
+
+    $query = "INSERT INTO `$tabela` (`$colunas`) VALUES (`$valores`)";
+    echo $query;
+?>
+
 
 </body>
 </html>
