@@ -5,17 +5,18 @@
 	</head>
 	<body> 
 
-<h1>Select (Read)</h1>
-
 <?php
 include_once("conexao.php"); //Com este comando nós podemos utiliza a variável $conexão disponpivel no arquivo "conexão.php" e importar dentro das funções com 'global $conexao'
 ?>
 
+<h1>Select (Read)</h1>
+<!-- "SELECT * FROM contato, email"; -->
 <?php
-    function read(){
+    function read($colunas, $tabelas){
         global $conexao; // Pega a variável definida no escopo global pelo include_once("conexao.php");
         
-        $query = "SELECT * FROM contato, email"; //Uma query que segue o padrão de escrita do SQL
+        $tabelas = implode(', ', $tabelas);
+        $query = "SELECT $colunas FROM $tabelas"; //Uma query que segue o padrão de escrita do SQL
         
         $resultado = @mysqli_query($conexao, $query); //o @mysqli_query necessita de dois argumentos, a conexão e a query. Caso apenas um desses dados ou nenhum deles estejam presentes, a busca não funcionará.
         
@@ -34,7 +35,7 @@ include_once("conexao.php"); //Com este comando nós podemos utiliza a variável
         }
     }
 
-    read();
+    read('*', ['contato', 'email']);
 ?>
 
 <h1>Insert (Create)</h1>
@@ -73,8 +74,7 @@ include_once("conexao.php"); //Com este comando nós podemos utiliza a variável
         return $resultado;
     }
     
-    echo "Descomente esse código para rodar a função:"
-    //create("email", [1, 'paulo-victor@gut', 'envie apenas documentos .ods'])
+    create("email", [1, 'paulo-victor@gut', 'envie apenas documentos .ods'])
 ?>
 
 <h1>Update</h1>
