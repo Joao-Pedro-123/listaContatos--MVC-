@@ -109,6 +109,18 @@ update("contato", ['apelido' => 'Ulisses', 'data_nasc' => '2016-08-31'], '`id_co
 <h1>Delete</h1>
 
 <!-- "DELETE FROM email WHERE `email`.`id_email` = 5" -->
+<?php
+function delete($tabela, $condicao){
+    global $conexao;
 
+    $query = "DELETE FROM `$tabela` WHERE `$tabela`.$condicao;";
+    echo $query;
+
+    $resultado = mysqli_query($conexao, $query);
+    echo $resultado;
+}
+delete('contato', '`id_contato` = 3');
+
+?>
 </body>
 </html>
