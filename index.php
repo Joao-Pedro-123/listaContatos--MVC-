@@ -1,5 +1,5 @@
 <?php
-require_once('index.php');
+require_once('model.php');
 ?>
 
 <h1>Insert (Create)</h1>

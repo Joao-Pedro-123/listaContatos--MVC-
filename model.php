@@ -14,7 +14,9 @@ include_once("conexao.php"); //Com este comando nós podemos utiliza a variável
     function read($colunas, $tabelas){
         global $conexao; // Pega a variável definida no escopo global pelo include_once("conexao.php");
         
-        $tabelas = implode(', ', $tabelas);
+        // Only apply the implode if it is an array
+        $colunas = !is_array($colunas) ? $colunas : implode(', ', $colunas); 
+        $tabelas = !is_array($tabelas) ? $tabelas : implode(', ', $tabelas);
         $query = "SELECT $colunas FROM $tabelas"; //Uma query que segue o padrão de escrita do SQL
         
         $resultado = @mysqli_query($conexao, $query); //o @mysqli_query necessita de dois argumentos, a conexão e a query. Caso apenas um desses dados ou nenhum deles estejam presentes, a busca não funcionará.
