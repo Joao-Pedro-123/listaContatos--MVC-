@@ -67,3 +67,20 @@ section{
 #contactInfoHeading{
     width: 100%;
 }
+
+/* FIELDS */
+.view-only {
+    background-color: rgba(255, 255, 255, 0.432);
+    border: none;
+    font-size: 1rem;
+    padding: .1rem;
+
+    field-sizing: content;
+    min-width: 90%;
+    max-width: 100%;
+}
+
+.telItem, .emailItem, .socialMediaItem, .adressItem, #contactInfoNameAndAge {
+    border: 2px solid black;
+    padding: .2rem;
+}
