@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 --
 -- Estrutura para tabela `contato`
 --
-
+///
 CREATE TABLE `contato` (
   `id_contato` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
@@ -109,7 +109,7 @@ CREATE TABLE `rede_social` (
 
 INSERT INTO `rede_social` (`id_rede_social`, `id_contato`, `link`, `nome_rede_social`, `obs`) VALUES
 (1, 1, 'https://instagram.com/paulogut', 'paulogut', 'Rede social privada para parentes e amigos\r\nNão use Windows 🦊'),
-(2, 2, 'https://instagram.com/josepeddro', 'josepeddro', '( ❛ ͜ʖ ❛ ) Jose pedro aqui');
+(2, 2, 'https://instagram.com/josepeddro', 'josepeddro', '( ❛ ʖ ❛ ) Jose pedro aqui');
 
 -- --------------------------------------------------------
 

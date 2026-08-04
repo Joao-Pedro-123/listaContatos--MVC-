@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="view.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav> <span> Olá, <b> User </b> </span> <span> <!-- Icone --> </span></nav> <!-- Navbar. Space Between nos estilos dps --> 
+    <section>
+        <!-- Fazer um loop que renderize os elementos dos contatos com base nas informações que o controller dá. Pensando por esse lado dá até pra fazer com JS. :O-->
+           
+        <!-- Bom, no MVC, a view n tem contato com o model, o controller faz o intermédio de tudo. Então acho que o controller vai receber os dados do model e processar de modo que seja apresentável na view-->
+        <div id="listContacts">
+            <div class="contactListItem" id="1">
+                <img class="contactListPhoto" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ECowJKykF42o6gD9CpzSM-4sXy7vadCAOb3OxT165g&s=10">
+                <span class="contactName">João Pedro</span>
+                
+            </div> 
+            <div class="contactListItem" id="2"> <!-- Na verdade a section é o agrupamento dos dois blocos, e as duas divs são os blocos, entao teriamos apenas uma section-->
+                <!-- Obrigado por explicar :] -->
+                
+                <img class="contactListPhoto" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ECowJKykF42o6gD9CpzSM-4sXy7vadCAOb3OxT165g&s=10">
+                <span class="contactListName">Kauã Padin</span>
+            </div>
+        </div>            
+        
+        <!-- Quando a pessoa clicar em algum contato...
+        
+            - Como a lista de contatos do whatsapp na esquerda, e um bloco à direita. que ao invés de ser conversas, seria as informações assim como no esboço que eu te mandei no google cha :O Ja volto OK
+            Aí nesse bloco de Read teriam as ações possíveis de CRUD: Update, Remove
+            Na própria lista poderia ter a opção de adicionar um contato novo (Create)
+            Sim, mas de modo não tão explicito, mas ao clicar em um botão de três pontinhos
+            
+            Como faríamos para um lado existir a lista, e do outro existir as informações adicionais?
+            Bom, usando o id do link que referencia um objeto
+            -->
+
+    <div id="contactInfo">
+        <!-- Esse é o bloco que ficará à esquerda da tela, e mostrará tudo relacionado ao contato selecionado. E as ações. -->
+        
+        <!-- Heading Bar -->
+        <div id="contactInfoHeading">
+            <img class="contactInfoPhoto" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ECowJKykF42o6gD9CpzSM-4sXy7vadCAOb3OxT165g&s=10">
+            <span class="contactInfoName">Zé</span>
+        </div>
+        
+        <div id="contactInfoGOne"> <!-- Primeiro grupo de informações. Este contém telefone, e-mail e redes socias. GOne significa Group One--> 
+        <!-- Telephones -->
+        <div id="contactInfoTel">
+            <h5> Telefones </h5>
+            <div class="telItem">
+                <span>17 98835-8054</span>
+                <span>Obs:</span>
+            </div>
+            <div class="telItem">
+                <span>17 98835-8054</span>
+                <span>Obs:</span>
+            </div>
+        </div>
+
+        <!-- Emails -->
+         <div id="contactInfoEmail">
+            <h5> E-mails </h5>
+            <div class="emailItem">
+                <span>wrong.email@gmail.com</span>
+                <span>Obs: Email novo</span>
+            </div>
+            <div class="emailItem">
+                <span>right.email@gmail.net</span>
+                <span>Obs: Email velho</span>
+            </div>
+        </div>
+
+        <!-- Social Media -->
+         <div id="contactInfoSocialMedia">
+            <h5> Redes Sociais </h5>
+            <div class="socialMediaItem">
+                <span>Nome: josepeddro</span>
+                <span>Link: linkedin.com/owo</span>
+                <span>Obs: Rede para negócios</span>
+            </div>
+            <div class="socialMediaItem">
+                <span>Nome: josepeddro</span>
+                <span>Link: linkedin.com/owo</span>
+                <span>Obs: Rede para negócios</span>
+            </div>
+        </div>
+
+        </div>
+        <div id="contactInfoGTwo">
+            <!-- Nomes e outros-->    
+             <div id="contactInfoNameAndAge"> 
+                <span> <b> Nome Completo: </b> José Pedro </span>
+                <span> <b> Idade: </b>  24 </span>
+             </div>
+
+             <!-- Endereços -->
+             <div id="contactInfoAdrees"> 
+                <div class="AdressItem">
+                <span>Logradouro: Linux</span> <br>
+                <span>Numero: 3145</span> <br>
+                <span>Cidade: Nova Vila Velha</span> <br> 
+                <span>Cep: 15804-080</span> <br>
+                <span>Complemento: Barril</span> <br>
+                <span>Obs: Barril pintado de verde escuro</span> <br>
+                <span>Ponto de Referência: Vila do Chaves</span> <br>
+            </div> <!-- Esqueci de Avisar, esse bloco de endereço estará fora deste grupo(Telefone, email e redes) eu pensei em colocálo logo abaixo delas, como se fosse um bloco de informações mais importantes -->
+            <!-- Acho que entendi, como um retângulo que o -->
+            <div class="AdressItem">
+                <span>Nome: josepeddro</span>
+                <span>Link: linkedin.com/owo</span>
+                <span>Obs: Rede para negócios</span>
+            </div>
+             </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
