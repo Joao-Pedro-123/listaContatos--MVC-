@@ -26,21 +26,34 @@ section{
 }
 
 #contactInfo {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
     background-color: rgba(0, 119, 255, 0.521);
     width: 60%;
     height: 95dvh;
-    align-items: center;
 }
 
 #contactInfoGOne{
     display: flex;
+    width: 100%;
+    background-color: blue ;
+
+    div{
+        width: auto;
+    }
 }
 
 #contactInfoGTwo{
     display: flex;
+    justify-content: space-between;
 }
 
 .contactInfoPhoto {
-    width: 10%;
-    height: 10%;
+    width: 5%;
+}
+
+#contactInfoHeading{
+    width: 100%;
 }
