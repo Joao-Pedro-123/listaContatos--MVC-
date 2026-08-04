@@ -36,26 +36,34 @@ section{
 /* CONTACT INFO BLOCK */
 
 #contactInfo {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
     background-color: rgba(0, 119, 255, 0.521);
     width: 60%;
     height: 95dvh;
-    align-items: center;
-
-    display: grid;
-    grid-template-rows: 1fr 2fr 2fr;
 }
 
 #contactInfoGOne{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    width: 100%;
+    background-color: blue ;
+
+    div{
+        width: auto;
+    }
 }
 
 #contactInfoGTwo{
-    display: grid;
-    grid-template-columns: 1fr 3fr;
+    display: flex;
+    justify-content: space-between;
 }
 
 .contactInfoPhoto {
-    width: 10%;
-    height: 10%;
+    width: 5%;
+}
+
+#contactInfoHeading{
+    width: 100%;
 }
