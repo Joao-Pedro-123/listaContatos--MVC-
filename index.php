@@ -9,22 +9,13 @@ require_once('model.php');
 
 <h1>Select (Read)</h1>
 <?php 
-    // read('*', ['contato', 'email']); 
-    read('*', 'contato');
-    /*
-SELECT * FROM `contato` as `c`
-INNER JOIN `email` as `em`
-ON `c`.`id_contato` = `em`.`id_contato`
-
-INNER JOIN `endereco` as `en`
-ON `c`.`id_contato` = `en`.`id_contato`
-
-INNER JOIN `rede_social` as `rede`
-ON `c`.`id_contato` = `rede`.`id_contato`
-
-INNER JOIN `telefone` as `tel`
-ON `c`.`id_contato` = `tel`.`id_contato`;
-    */
+# Pegar todos os dados desse contato ($id=2)
+# fica mais fácil de colocar em um Objeto pro View
+    read('*', 'contato', 2);
+    read('*', 'email', 2);
+    read('*', 'rede_social', 2);
+    read('*', 'endereco', 2);
+    read('*', 'telefone', 2);
 ?>
 
 <h1>Update</h1>
