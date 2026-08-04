@@ -11,11 +11,11 @@ require_once('model.php');
 <?php 
 # Pegar todos os dados desse contato ($id=2)
 # fica mais fácil de colocar em um Objeto pro View
-    read('*', 'contato', 2);
-    read('*', 'email', 2);
-    read('*', 'rede_social', 2);
-    read('*', 'endereco', 2);
-    read('*', 'telefone', 2);
+    read('*', 'contato', 'id_contato = 2');
+    read('*', 'email', 'id_contato = 2');
+    read('*', 'rede_social', 'id_contato = 2');
+    read('*', 'endereco', 'id_contato = 2');
+    read('*', 'telefone', 'id_contato = 2');
 ?>
 
 <h1>Update</h1>
