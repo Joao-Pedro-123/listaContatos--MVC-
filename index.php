@@ -11,12 +11,24 @@ require_once('model.php');
 <?php 
 # Pegar todos os dados desse contato ($id=2)
 # fica mais fácil de colocar em um Objeto pro View
-    read('*', 'contato', 'id_contato = 2');
-    read('*', 'email', 'id_contato = 2');
-    read('*', 'rede_social', 'id_contato = 2');
-    read('*', 'endereco', 'id_contato = 2');
-    read('*', 'telefone', 'id_contato = 2');
+    function getContactData($id) {
+        $condition = 'id_contato = '. $id;
+        $contactData = read_json('*', 'contato', $condition)[0];
+        $contactData["email"] = read_json('email, obs', 'email', $condition);
+        $contactData["rede_social"] = read_json('link, nome_rede_social, obs', 'rede_social', $condition);
+        $contactData["endereco"] = read_json('logradouro, numero, cidade, cep, complemento, obs, ponto_ref', 'endereco', $condition);
+        $contactData["telefone"] = read_json('telefone, obs', 'telefone', $condition);
+        return $contactData;
+    }
+
+    $jose = getContactData(2);
+    // $dados_jose = $jose["email"][0];
+    $dados_jose = $jose;
+    echo "<pre>";
+    print_r($dados_jose);
+    echo "</pre>";
 ?>
+
 
 <h1>Update</h1>
 <?php

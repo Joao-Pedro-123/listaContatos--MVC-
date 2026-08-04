@@ -53,7 +53,7 @@ function read($colunas, $tabelas, $condicao = ""){
     $resultado = @mysqli_query($conexao, $query); //o @mysqli_query necessita de dois argumentos, a conexão e a query. Caso apenas um desses dados ou nenhum deles estejam presentes, a busca não funcionará.
     
     $rows = @mysqli_num_fields($resultado);//Busca as a linhas totais do resultado
-    echo "Rows: " . $rows ."<br>";
+    // echo "Rows: " . $rows ."<br>";
     while ($dados = mysqli_fetch_array($resultado)) { //Enquanto for possível atribuir o dado recebido do mysqli_fetch_array ao $dados, esse loop acontecerá
         for ($i = 0; $i < $rows ; $i++) {  //Como o resultado começa em 0, o $i só chegará até o máximo de registros possíveis de serem buscados. Ex: O $rows retorna 8, os resultados começam com um index igual a 0, então teremos apenas 7 registros. Logo, o $i precisa ser menor que o $rows. E é bom utilizar uma variável ao invés de um número fixo ali pois agiliza a busca de registro, não necessitando a visualização do numero de colunas do registro toda vez que mudar a consulta.
             if ($dados[$i] != ""){
@@ -65,6 +65,31 @@ function read($colunas, $tabelas, $condicao = ""){
             }
         }
     }
+}
+
+function read_json($colunas, $tabelas, $condicao = ""){
+    // Pega a variável definida no escopo global pelo include_once("conexao.php");
+    global $conexao;
+    // global $tabelas;
+
+    // Só é necessário o implode() se $colunas ou $tabelas for um array
+    $colunas = !is_array($colunas) ? $colunas : implode(', ', $colunas); 
+    $tabelas = !is_array($tabelas) ? $tabelas : implode(', ', $tabelas);
+    
+    # Não precisa de WHERE se o argumento $condição estiver vazio
+    $condicao = $condicao ? "WHERE $condicao" : "";
+
+    // Uma query que segue o padrão de escrita do SQL
+    $query = "SELECT $colunas FROM $tabelas $condicao";
+
+    $resultado = @mysqli_query($conexao, $query); //o @mysqli_query necessita de dois argumentos, a conexão e a query. Caso apenas um desses dados ou nenhum deles estejam presentes, a busca não funcionará.
+    
+    $rows = array();
+    // echo "Rows: " . $rows ."<br>";
+    while ($dados = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) { //Enquanto for possível atribuir o dado recebido do mysqli_fetch_array ao $dados, esse loop acontecerá
+        $rows[] = $dados;
+    }
+    return $rows;
 }
 
 function update($tabela, $atualizacoes, $condicao){
