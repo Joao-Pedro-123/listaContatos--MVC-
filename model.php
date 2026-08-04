@@ -35,7 +35,7 @@ function create($tabela, $valores) {
     return $resultado;
 }
 
-function read($colunas, $tabelas, $condicao){
+function read($colunas, $tabelas, $condicao = ""){
     // Pega a variável definida no escopo global pelo include_once("conexao.php");
     global $conexao;
     // global $tabelas;
@@ -44,8 +44,11 @@ function read($colunas, $tabelas, $condicao){
     $colunas = !is_array($colunas) ? $colunas : implode(', ', $colunas); 
     $tabelas = !is_array($tabelas) ? $tabelas : implode(', ', $tabelas);
     
+    # Não precisa de WHERE se o argumento $condição estiver vazio
+    $condicao = $condicao ? "WHERE $condicao" : "";
+
     // Uma query que segue o padrão de escrita do SQL
-    $query = "SELECT $colunas FROM $tabelas WHERE $condicao";
+    $query = "SELECT $colunas FROM $tabelas $condicao";
 
     $resultado = @mysqli_query($conexao, $query); //o @mysqli_query necessita de dois argumentos, a conexão e a query. Caso apenas um desses dados ou nenhum deles estejam presentes, a busca não funcionará.
     
