@@ -1,59 +1,296 @@
+:root {
+    --paper: #f7f4ee;
+    --card: #fffdf8;
+    --ink: #272319;
+    --muted: #7a705b;
+    --line: #d6ccb9;
+    --accent: #b3472f;
+    --accent-soft: #f4ddcf;
+    --accent-dark: #8f3622;
+    --deep: #1f1a14;
+    --gradient: white;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Fraunces:opsz,wght@9..144,700&display=swap");
+
 * {
-    margin: 0 auto;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Manrope", "Segoe UI", sans-serif;
+    color: var(--ink);
+    background:
+        radial-gradient(circle at 16% 10%, #fff4df 0%, transparent 34%),
+        radial-gradient(circle at 88% 90%, #f6dcc3 0%, transparent 38%),
+        linear-gradient(165deg, #f0e7d9 0%, #f8f4ec 46%, #ece2d2 100%);
+    min-height: 100vh;
+    padding: 24px;
 }
 
 nav {
-    background-color: rgba(8, 247, 20, 0.63);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+    min-height: 1em;
+    padding: 18px 22px;
+    border: 2px solid var(--line);
+    border-radius: 18px;
+    background: linear-gradient(118deg, #fff 0%, #fff7eb 52%, #f0d2b9 100%);
+    box-shadow: 0 10px 24px rgb(41 30 16 / 11%);
+    margin-bottom: 14px;
 }
 
-section{
+nav span {
     display: flex;
+    align-items: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.015em;
+    position: relative;
+}
+
+
+section {
+    display: grid;
+    grid-template-columns: minmax(220px, 30%) minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
 }
 
 #listContacts {
-    background-color: rgba(0, 38, 255, 0.521); 
-    width: 35%;
-    height: 95dvh;
+    background: var(--card);
+    border: 2px solid var(--line);
+    border-radius: 18px;
+    min-height: calc(100vh - 206px);
+    padding: 14px;
+    box-shadow: 0 6px 18px rgb(40 30 20 / 8%);
 }
 
 .contactListItem {
-    background-color: rgba(255, 154, 107, 0.521);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #fff;
+    margin-bottom: 10px;
+    transition: transform 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.contactListItem:hover {
+    transform: translateY(-1px);
+    border-color: #c8a88e;
+    box-shadow: 0 8px 14px rgb(163 95 55 / 12%);
 }
 
 .contactListPhoto {
-    width: 5%;
-    height: 5%;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #d6b69d;
+}
+
+.contactName,
+.contactListName {
+    font-weight: 700;
+    color: #352d22;
 }
 
 #contactInfo {
     display: flex;
-    justify-content: start;
-    align-items: start;
     flex-direction: column;
-    background-color: rgba(0, 119, 255, 0.521);
-    width: 60%;
-    height: 95dvh;
+    gap: 14px;
+    min-height: calc(100vh - 206px);
 }
 
-#contactInfoGOne{
-    display: flex;
+#contactInfoHeading {
     width: 100%;
-    background-color: blue ;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border: 2px solid var(--line);
+    border-radius: 18px;
+    background: var(--card);
+    box-shadow: 0 6px 18px rgb(40 30 20 / 8%);
+}
 
-    div{
-        width: auto;
+#contactInfoHeading img:last-child {
+    max-height: 10em;
+    flex: 1;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 1px solid #cfb8a0;
+    -webkit-mask-image: linear-gradient(230deg, black 0%, transparent 70%);
+    mask-image: linear-gradient(230deg  , black 0%, transparent 70%);
+}
+
+#mainTel{
+    font-size: 0.8em;
+    width: 100% auto;
+    background-color: greenyellow;
+    padding: 0.4em 0.8em;
+    border-radius: 1.5em;
+}
+
+
+.contactInfoPhoto {
+    width: 7em;
+    height: 7em;
+    margin: 1em;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #d8b89c;
+}
+
+.contactInfoName {
+    font-size: clamp(1.1rem, 1.7vw, 1.4rem);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+}
+
+#contactInfoGOne {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border: 2px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--card);
+}
+
+#contactInfoGOne>div {
+    padding: 14px;
+    border-right: 1px solid var(--line);
+    min-height: 220px;
+}
+
+#contactInfoGOne>div:last-child {
+    border-right: 0;
+}
+
+#contactInfoGOne h5,
+#contacInfoAdress h5 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #483b2b;
+    border-bottom: 2px solid #d9c4ac;
+    display: inline-block;
+    padding-bottom: 3px;
+}
+
+.telItem,
+.emailItem,
+.socialMediaItem,
+.adressItem,
+#contactInfoObs {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 0.92rem;
+    color: #413728;
+    padding: 1.1em 1.1em;
+    border: 1px solid #eadccc;
+    border-radius: 10px;
+    background: #fff;
+    margin-bottom: 8px;
+}
+
+.telItem span:last-child,
+.emailItem span:last-child,
+.socialMediaItem span:last-child,
+.adressItem span:last-child {
+    color: var(--muted);
+    font-size: 0.84rem;
+}
+
+#contactInfoGTwo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+#contactInfoNameAndAge,
+#contacInfoAdress {
+    border: 2px solid var(--line);
+    border-radius: 18px;
+    background: var(--card);
+    padding: 14px;
+    box-shadow: 0 6px 18px rgb(40 30 20 / 8%);
+}
+
+#contactInfoNameAndAge {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#contactInfoNameAndAge span {
+    display: block;
+    border-bottom: 1px dashed #d9c4ac;
+    padding-bottom: 8px;
+}
+
+#contactInfoNameAndAge span:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+@media (max-width: 1100px) {
+    section {
+        grid-template-columns: 1fr;
+    }
+
+    #listContacts {
+        min-height: auto;
+    }
+
+    #contactInfo {
+        min-height: auto;
+    }
+
+    #contactInfoGOne {
+        grid-template-columns: 1fr;
+    }
+
+    #contactInfoGOne>div {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+    }
+
+    #contactInfoGOne>div:last-child {
+        border-bottom: 0;
     }
 }
 
-#contactInfoGTwo{
-    display: flex;
-    justify-content: space-between;
-}
+@media (max-width: 780px) {
+    body {
+        padding: 12px;
+    }
 
-.contactInfoPhoto {
-    width: 5%;
-}
+    nav {
+        align-items: flex-start;
+        flex-direction: column;
+    }
 
-#contactInfoHeading{
-    width: 100%;
+    nav span:first-child::after {
+        position: static;
+        display: block;
+        margin-top: 6px;
+        word-spacing: 10px;
+    }
+
+    nav span:last-child {
+        width: 100%;
+    }
+
+    #contactInfoGTwo {
+        grid-template-columns: 1fr;
+    }
 }
