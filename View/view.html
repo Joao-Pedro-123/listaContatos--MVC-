@@ -9,6 +9,35 @@
 </head>
 
 <body>
+    <dialog id="popupForm">
+        <h2>Titulo do dialog</h2>
+
+        <form method="post" action="">
+
+            <div id="mainDialogInputs">
+                <div>
+                    <label for="nome">Nome:</label>
+                    <input name="nome" type="text">
+                </div>
+                <div>
+                    <label for="telefone">Telefone</label>
+                    <input name="telefone" type="text">
+                </div>
+            </div>
+
+            <!-- <div id="extraDialogInputs">
+                <label for="nome">Nome:</label>
+                <input name="nome" type="text">
+
+                <label for="telefone">Telefone</label>
+                <input name="telefone" type="text">
+            </div> -->
+
+            <input type="submit" onclick="submit()" value="Ação">
+        </form>
+
+    </dialog>
+
     <nav> <span> Olá, <b> User </b> </span> <span> <!-- Icone --> </span></nav>
     <!-- Navbar. Space Between nos estilos dps -->
     <section>
@@ -18,7 +47,7 @@
         <div id="listContacts">
             <div id="listContactsHeader">
                 <h4> Contatos </h4>
-                <button> + </button>
+                <a onclick="popupFormOpen()"> + </a>
             </div>
             <div class="contactListItem" id="1">
                 <img class="contactListPhoto"
@@ -125,5 +154,17 @@
         </div> <!-- ContactInfo -->
     </section> <!-- Grupo dos Blocos -->
 </body>
+<script>
+    const formDialog = document.getElementById("popupForm");
+
+    
+    function popupFormOpen(){
+        formDialog.showModal();
+    };
+
+    function submit(){
+        formDialog.close();
+    };
+</script>
 
 </html>
