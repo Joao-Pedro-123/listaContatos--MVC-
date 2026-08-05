@@ -102,6 +102,8 @@ section {
     color: #352d22;
 }
 
+/* CONTACT INFO BLOCK */
+
 #contactInfo {
     display: flex;
     flex-direction: column;
