@@ -9,9 +9,9 @@
 </head>
 
 <body>
-    <nav> <span> Olá, <b> User </b> </span> <span> <!-- Icone --> </span></nav>
     <!-- Navbar. Space Between nos estilos dps -->
     <section>
+        <nav> <div> Olá, <b> User </b> </div> <div> <!-- Icone --> </div></nav>
         <!-- Fazer um loop que renderize os elementos dos contatos com base nas informações que o controller dá. Pensando por esse lado dá até pra fazer com JS. :O-->
 
         <!-- Bom, no MVC, a view n tem contato com o model, o controller faz o intermédio de tudo. Então acho que o controller vai receber os dados do model e processar de modo que seja apresentável na view-->
@@ -51,68 +51,71 @@
                 <span class="contactInfoName">Zé</span>
             </div>
 
-            <div id="contactInfoGOne"> <!-- Primeiro grupo de informações. Este contém telefone, e-mail e redes socias. GOne significa Group One-->
+            <!-- <div id="contactInfoGOne"> Primeiro grupo de informações. Este contém telefone, e-mail e redes socias. GOne significa Group One -->
                 <!-- Telephones -->
                 <div id="contactInfoTel">
-                    <h5> Telefones </h5>
+                    <h3> Telefones </h3>
                     <div class="telItem">
-                        <span>17 98835-8054</span>
-                        <span>Obs:</span>
+                        <div>17 98835-8054</div>
+                        <div>Obs:</div>
                     </div>
                     <div class="telItem">
-                        <span>17 98835-8054</span>
-                        <span>Obs:</span>
+                        <div>17 98835-8054</div>
+                        <div>Obs:</div>
                     </div>
                 </div>
 
                 <!-- Emails -->
                 <div id="contactInfoEmail">
-                    <h5> E-mails </h5>
+                    <h3> E-mails </h3>
                     <div class="emailItem">
-                        <span>wrong.email@gmail.com</span>
-                        <span>Obs: Email novo</span>
+                        <div>wrong.email@gmail.com</div>
+                        <div>Obs: Email novo</div>
                     </div>
                     <div class="emailItem">
-                        <span>right.email@gmail.net</span>
-                        <span>Obs: Email velho</span>
+                        <div>right.email@gmail.net</div>
+                        <div>Obs: Email velho</div>
                     </div>
                 </div>
 
                 <!-- Social Media -->
                 <div id="contactInfoSocialMedia">
-                    <h5> Redes Sociais </h5>
+                    <h3> Redes Sociais </h3>
                     <div class="socialMediaItem">
-                        <span>Nome: josepeddro</span>
-                        <span>Link: linkedin.com/owo</span>
-                        <span>Obs: Rede para negócios</span>
+                        <div>Nome: josepeddro</div>
+                        <div>Link: linkedin.com/owo</div>
+                        <div>Obs: Rede para negócios</div>
                     </div>
                     <div class="socialMediaItem">
-                        <span>Nome: josepeddro</span>
-                        <span>Link: linkedin.com/owo</span>
-                        <span>Obs: Rede para negócios</span>
+                        <div>Nome: josepeddro</div>
+                        <div>Link: linkedin.com/owo</div>
+                        <div>Obs: Rede para negócios</div>
                     </div>
                 </div>
-            </div> <!-- ContactInfoGOne -->
+            <!-- </div> ContactInfoGOne -->
 
-                <div id="contactInfoGTwo">
+                <!-- <div id="contactInfoGTwo"> -->
                     <!-- Nomes e outros-->
                     <div id="contactInfoNameAndAge">
-                        <span> <b> Nome Completo: </b> José Pedro </span>
-                        <span> <b> Idade: </b> 24 </span>
+                        <h3>Dados Pessoais</h3>
+                        <div class="contactInfoItem">
+                            <div> <b> Nome Completo: </b> José Pedro </div>
+                            <div> <b> Idade: </b> 24 </div>
+                        </div>
                     </div>
                     <div id="contacInfoAdress">
-                        <h5> Endereços </h5>
+                        <h3> Endereços </h3>
                         <div class="adressItem">
-                            <span>Logradouro: Linux</span>
-                            <span>Numero: 3145</span>
-                            <span>Cidade: Nova Vila Velha</span>
-                            <span>Cep: 15804-080</span>
-                            <span>Complemento: Barril</span>
-                            <span>Obs: Barril pintado de verde escuro</span>
-                            <span>Ponto de Referência: Vila do Chaves</span>
+                            <div>Logradouro: Linux</div>
+                            <div>Numero: 3145</div>
+                            <div>Cidade: Nova Vila Velha</div>
+                            <div>Cep: 15804-080</div>
+                            <div>Complemento: Barril</div>
+                            <div>Obs: Barril pintado de verde escuro</div>
+                            <div>Ponto de Referência: Vila do Chaves</div>
                         </div> <!-- adressItem-->
                     </div> <!-- ContactAdress-->
-                </div> <!-- ContactInfoGTwo -->
+                <!-- </div> ContactInfoGTwo -->
         </div> <!-- ContactInfo -->
     </section> <!-- Grupo dos Blocos -->
 </body>

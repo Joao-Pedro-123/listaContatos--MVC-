@@ -2,20 +2,33 @@
     margin: 0 auto;
 }
 
-nav {
-    background-color: rgba(8, 247, 20, 0.63);
+:root {
+    --main-gap: 2rem;
 }
 
-section{
-    display: flex;
+nav {
+    background-color: rgba(8, 247, 20, 0.63);
+    margin: 1rem 0 0 0 ;
+    padding: 2rem;
+    grid-column: span 2;
+}
+
+section{    
+    margin: 0 2rem 0 2rem;
+    display: grid;
+    grid-template-rows: auto 7fr;
+    grid-template-columns: 3fr 7fr;
+    gap: var(--main-gap);
+
 }
 
 /* LIST OF CONTACTS */
 
 #listContacts {
     background-color: rgba(0, 38, 255, 0.521); 
-    width: 35%;
-    height: 95dvh;
+    /* width: 35%; */
+    height: 87dvh;
+    margin: 0px;
 }
 
 .contactListItem {
@@ -36,34 +49,80 @@ section{
 /* CONTACT INFO BLOCK */
 
 #contactInfo {
-    display: flex;
+    border: 2px solid rgba(0, 119, 255, 0.521);
+    width: 100%;
+    display: grid;
+
+    height: 85dvh;
+    grid-template-rows: auto 5fr 5fr;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    gap: var(--main-gap);
+
+    > div {
+        border: 2px solid green;
+        width: 100%;
+    }
+
+    /* display: flex;
     justify-content: start;
     align-items: start;
-    flex-direction: column;
-    background-color: rgba(0, 119, 255, 0.521);
-    width: 60%;
-    height: 95dvh;
-}
+    flex-direction: column; */
 
-#contactInfoGOne{
-    display: flex;
-    width: 100%;
-    background-color: blue ;
+    /* width: 60%; */
 
-    div{
-        width: auto;
+    #contacInfoAdress {
+        grid-column: span 2;
     }
-}
-
-#contactInfoGTwo{
-    display: flex;
-    justify-content: space-between;
-}
-
-.contactInfoPhoto {
-    width: 5%;
 }
 
 #contactInfoHeading{
     width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    height: 100%;
+
+    grid-column: span 3;
+    
+    .contactInfoPhoto {
+        border-radius: 100%;
+        height: 5rem;
+        width: 5rem;
+    }
+    :last-child{
+        display: flex;
+        align-items: center;
+        font-size: 3rem;
+    }
 }
+
+/* ITEMS */
+
+.telItem, .emailItem, .socialMediaItem, .adressItem, .contactInfoItem {
+    border: 2px solid orange;
+    margin: .5rem 0;
+}
+
+/* #contactInfoGOne{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    background-color: blue ;
+
+    gap: var(--main-gap);
+
+    >div{
+        background-color: aqua;  
+        width: 100%;
+    }
+    
+}
+
+#contactInfoGTwo{
+    display: grid;
+    grid-template-columns: 4fr 9fr;
+    gap: var(--main-gap);
+    >div {
+        background-color: aqua;
+    }
+} */
