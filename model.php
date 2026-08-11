@@ -10,6 +10,27 @@ $tabelas = [
     "telefone" => ['id_contato', 'telefone', 'obs']
 ];
 
+function verify_tables(){
+    $avaliable_colunas = [];
+    $avaliable_tabelas = [];
+    global $tabelas;
+
+    foreach ($tabelas as $tabela) {
+       foreach ($tabela as $coluna) {
+            $valorfilled = 0;
+            if (!$_POST[$coluna]){
+                continue;   
+            } 
+
+            array_push($avaliable_colunas, $_POST[$coluna]);
+            $valorfilled++;
+
+            if($valorfilled === 0){
+                $avaliable_tabelas[] = 0;
+            } //É necessario contar quando realizar esta verificacao 
+       }
+}}
+
 # Essa mesma função vai servir para fazer insert em todas as colunas, baseado apenas no nome
 function create($tabela, $valores)
 {
@@ -20,8 +41,12 @@ function create($tabela, $valores)
     # Pega as colunas da tabela usando a lookup table
     $colunas = $tabelas[$tabela];
 
+    foreach ($colunas as $coluna) {
+        $colunasnew += $tabelas[$coluna];
+    }
+
     # Cerca cada um das colunas e valores com '' e ``
-    $colunas = implode("`, `", $colunas);
+    $colunas = implode("`, `", $colunasnew);
     $valores = implode("', '", $valores);
 
     # Prepara a query dinamicamente

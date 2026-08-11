@@ -48,28 +48,93 @@ if (isset($_GET["id"])) {
     <dialog id="popupForm">
         <h2>Titulo do dialog</h2>
 
-        <form method="post" action="">
+        <form method="post" action="#">
 
-            <div id="mainDialogInputs">
-                <div>
-                    <label for="nome">Nome:</label>
-                    <input name="nome" type="text">
+            <div id="inputs">
+                <div id="mainDialogInputs">
+                    <div id="mainDialogInputsName">
+                        <label for="nome">Nome:</label>
+                        <input name="nome" type="text" requires>
+                    </div>
+                    <div id="mainDialogInputsNick">
+                        <label for="apelido">Apelido: </label>
+                        <input name="apelido" type="text">
+                    </div>
+                    <div id="mainDialogInputsBirth">
+                        <label for="data_nasc">Data de Nacimento: </label>
+                        <input name="data_nasc" type="date">
+                    </div>
+
+                    <div id="mainDialogInputsNumber">
+                        <label for="telefoneOne">Telefone: </label>
+                        <input name="telefoneOne" type="text" required> <br> <br>
+                    </div>
                 </div>
-                <div>
-                    <label for="telefone">Telefone</label>
-                    <input name="telefone" type="text">
+
+                <div id="extraDialogInputs">
+                    <div id="extraDialogInputsEmails">
+                        <label for="emailOne"> Email:</label>
+                        <input name="emailOne" type="email">
+
+                        <label for="emailTwo"> Email: </label>
+                        <input name="emailTwo" type="email">
+                    </div> <br>
+
+                    <div id="extraDialogInputsNumbers">
+                        <label for="telefoneTwo"> Telefone 2:</label>
+                        <input name="telefoneTwo" type="text">
+
+                        <label for="telefoneThree"> Telefone 3: </label>
+                        <input name="telefoneThree" type="text">
+                    </div> <br>
+
+                    <div id="extraDialogInputsSocialM">
+                        <div>
+                            <label for="redesocialOneName"> Rede Social 1:</label>
+                            <input name="redesocialOneName" type="text">
+
+                            <label for="redesocialTwoName"> Rede Social 2: </label>
+                            <input name="redesocialTwoName" type="text">
+                        </div>
+
+                        <div>
+                            <label for="redesocialOneLink"> Link 1: </label>
+                            <input name="redesocialOneLink" type="text">
+
+
+                            <label for="redesocialTwoLink"> Link 2: </label>
+                            <input name="redesocialTwoLink" type="text">
+                        </div>
+                    </div> <br>
+
+                    <div id="extraDialogInputsAdress">
+                        <label for="logradouroOne"> Logradouro 1: </label>
+                        <input name="logradouroOne" type="text">
+
+                        <label for="numeroOne"> Número 1: </label>
+                        <input name="numeroOne" type="text">
+
+                        <label for="cidadeOne"> Cidade 1: </label>
+                        <input name="cidadeOne" type="text">
+
+                        <label for="cepOne"> CEP 1: </label>
+                        <input name="cepOne" type="text">
+
+                        <label for="complementoOne"> Complemento 1: </label>
+                        <input name="complementoOne" type="text">
+
+                        <label for="observacaoOne"> Observação 1: </label>
+                        <input name="observacaoOne" type="text">
+
+                        <label for="pontorefOne"> Ponto de Referência 1: </label>
+                        <input name="pontorefOne" type="text">
+                    </div> <br>
                 </div>
             </div>
 
-            <!-- <div id="extraDialogInputs">
-                <label for="nome">Nome:</label>
-                <input name="nome" type="text">
-
-                <label for="telefone">Telefone</label>
-                <input name="telefone" type="text">
-            </div> -->
-
-            <input type="submit" onclick="submit()" value="Ação">
+            <div id="dialogActionButtons">
+                <input type="submit" onclick="submit()" value="Ação">
+            </div>
         </form>
 
     </dialog>
