@@ -70,7 +70,7 @@ if (isset($_GET["id"])) {
                         <input name="telefoneOne" type="text" required> <br> <br>
                     </div>
                 </div>
-
+                <hr>
                 <div id="extraDialogInputs">
                     <div id="extraDialogInputsEmails">
                         <label for="emailOne"> Email:</label>

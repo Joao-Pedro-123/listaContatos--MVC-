@@ -37,10 +37,10 @@ require_once('model.php');
 <!-- 
 <h1>Update</h1>
 <?php
-    update("contato", ['apelido' => 'Ulisses', 'data_nasc' => '2016-08-31'], '`id_contato` = 3');
+    // update("contato", ['apelido' => 'Ulisses', 'data_nasc' => '2016-08-31'], '`id_contato` = 3');
 ?>
 
 <h1>Delete</h1>
 <?php
-    delete('contato', '`id_contato` = 3');
+    // delete('contato', '`id_contato` = 3');
 ?> -->

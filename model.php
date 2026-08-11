@@ -10,6 +10,7 @@ $tabelas = [
     "telefone" => ['id_contato', 'telefone', 'obs']
 ];
 
+// Comenta o código pfv
 function verify_tables(){
     $avaliable_colunas = [];
     $avaliable_tabelas = [];
@@ -34,6 +35,11 @@ function verify_tables(){
             
         $avaliable_colunas = [];
 }}
+
+
+////////////////////
+/// FUNÇÕES CRUD ///
+////////////////////
 
 # Essa mesma função vai servir para fazer insert em todas as colunas, baseado apenas no nome
 function create($tabela, $valores)
