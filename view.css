@@ -342,3 +342,8 @@ dialog {
         backdrop-filter: blur(2px);
     }
 }
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+}

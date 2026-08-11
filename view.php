@@ -7,6 +7,25 @@
     <link rel="stylesheet" href="view.css">
     <title>Document</title>
 </head>
+<?php
+include_once("index.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $user = getContactData($id);
+    $dados_user = $user["contato"];
+    print_r($dados_user["data_nasc"]);
+
+
+    // for ($i = 0; $i < 4; $i++) {
+    //     foreach ($user["email"] as $dados_user) {
+    //         echo "<div class='emailItem'> <span>" . $dados_user['email'];
+    //         "</span> <span>Obs:" . $dados_user["obs"] . "</span></div>";
+    //     }
+    // }
+}
+
+?>
 
 <body>
     <dialog id="popupForm">
@@ -49,20 +68,25 @@
                 <h4> Contatos </h4>
                 <a onclick="popupFormOpen()"> + </a>
             </div>
-            <div class="contactListItem" id="1">
-                <img class="contactListPhoto"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ECowJKykF42o6gD9CpzSM-4sXy7vadCAOb3OxT165g&s=10">
-                <span class="contactName">João Pedro</span>
 
-            </div>
-            <div class="contactListItem" id="2">
-                <!-- Na verdade a section é o agrupamento dos dois blocos, e as duas divs são os blocos, entao teriamos apenas uma section-->
-                <!-- Obrigado por explicar :] -->
+            <a href="view.php?id=1">
+                <div class="contactListItem" id="1">
+                    <img class="contactListPhoto"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ECowJKykF42o6gD9CpzSM-4sXy7vadCAOb3OxT165g&s=10">
+                    <span class="contactName">João Pedro</span>
 
-                <img class="contactListPhoto"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ECowJKykF42o6gD9CpzSM-4sXy7vadCAOb3OxT165g&s=10">
-                <span class="contactListName">Kauã Padin</span>
-            </div>
+                </div>
+            </a>
+            <a href="view.php?id=2">
+                <div class="contactListItem" id="2">
+                    <!-- Na verdade a section é o agrupamento dos dois blocos, e as duas divs são os blocos, entao teriamos apenas uma section-->
+                    <!-- Obrigado por explicar :] -->
+
+                    <img class="contactListPhoto"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ECowJKykF42o6gD9CpzSM-4sXy7vadCAOb3OxT165g&s=10">
+                    <span class="contactListName">Kauã Padin</span>
+                </div>
+            </a>
         </div>
 
         <!-- Quando a pessoa clicar em algum contato...
@@ -92,51 +116,48 @@
                 <!-- Telephones -->
                 <div id="contactInfoTel">
                     <h5> Telefones </h5>
-                    <div class="telItem">
-                        <span>17 98834-8324</span>
-                        <span>Obs: Telefone Comercial </span>
-                    </div>
-                    <div class="telItem">
-                        <span id="mainTel" style="width: 48%;">17 98835-8054</span>
-                        <span>Obs: Telefone Pessoal </span>
-                    </div>
+                    <?php
+                    foreach ($user["telefone"] as $dados_user) {
+
+                        echo "<div class='telItem'> <span>" . $dados_user['telefone'] . //Adicionar o mainTel aqui depois
+                            "</span> <span>Obs: " . $dados_user["obs"] . "</span></div>";
+
+                    }
+                    ?>
                 </div>
 
                 <!-- Emails -->
                 <div id="contactInfoEmail">
                     <h5> E-mails </h5>
-                    <div class="emailItem">
-                        <span>wrong.email@gmail.com</span>
-                        <span>Obs: Email novo</span>
-                    </div>
-                    <div class="emailItem">
-                        <span>right.email@gmail.net</span>
-                        <span>Obs: Email velho</span>
-                    </div>
+                    <?php
+                    foreach ($user["email"] as $dados_user) {
+                        echo "<div class='emailItem'> <span>" . $dados_user['email'] .
+                            "</span> <span>Obs: " . $dados_user["obs"] . "</span></div>";
+                    }
+                    ?>
                 </div>
 
                 <!-- Social Media -->
                 <div id="contactInfoSocialMedia">
                     <h5> Redes Sociais </h5>
-                    <div class="socialMediaItem">
-                        <span>Nome: josepeddro</span>
-                        <span>Link: linkedin.com/owo</span>
-                        <span>Obs: Rede para negócios</span>
-                    </div>
-                    <div class="socialMediaItem">
-                        <span>Nome: josepeddro</span>
-                        <span>Link: linkedin.com/owo</span>
-                        <span>Obs: Rede para negócios</span>
-                    </div>
+                    <?php
+                    foreach ($user["rede_social"] as $dados_user) {
+                        echo "<div class='socialMediaItem'> <span> Nome: " . $dados_user['nome_rede_social'] . //Adicionar o mainTel aqui
+                            "</span> <span>Link: " . $dados_user["link"] . "</span> <span>Obs:  " . $dados_user["obs"] . "</span> </div>";
+                    }
+                    ?>
                 </div>
             </div> <!-- ContactInfoGOne -->
 
             <div id="contactInfoGTwo">
                 <!-- Nomes e outros-->
                 <div id="contactInfoNameAndAge">
-                    <span> <b> Nome Completo: </b> José Pedro </span>
-                    <span> <b> Idade: </b> 24 </span>
-                    <div id="contactInfoObs"> <b> Obs: </b> João 3:16 </div>
+                    <?php
+                        echo "<div class='telItem'> <span> <b> Nome Completo: </b>" . $user["contato"]["nome"]. //Adicionar o mainTel aqui
+                            "</span> <span> <b> Idade: </b>" .$user["contato"]["data_nasc"] . "</span></div>";
+                    
+                    ?>
+                    <!-- <div id="contactInfoObs"> <b> Obs: </b> João 3:16 </div> -->
                 </div>
                 <div id="contacInfoAdress">
                     <h5> Endereços </h5>
@@ -157,12 +178,12 @@
 <script>
     const formDialog = document.getElementById("popupForm");
 
-    
-    function popupFormOpen(){
+
+    function popupFormOpen() {
         formDialog.showModal();
     };
 
-    function submit(){
+    function submit() {
         formDialog.close();
     };
 </script>
