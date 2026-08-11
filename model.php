@@ -16,19 +16,23 @@ function verify_tables(){
     global $tabelas;
 
     foreach ($tabelas as $tabela) {
+        $valorfilled = 0;
        foreach ($tabela as $coluna) {
-            $valorfilled = 0;
-            if (!$_POST[$coluna]){
+            if (empty($_POST[$coluna])){
                 continue;   
             } 
 
-            array_push($avaliable_colunas, $_POST[$coluna]);
+            $avaliable_colunas[] = $_POST[$coluna];
             $valorfilled++;
+            }
 
-            if($valorfilled === 0){
-                $avaliable_tabelas[] = 0;
-            } //É necessario contar quando realizar esta verificacao 
-       }
+        if($valorfilled === 0){
+            $avaliable_tabelas[] = 0;
+        } else{
+            $avaliable_tabelas[] = $avaliable_colunas;
+            }
+            
+        $avaliable_colunas = [];
 }}
 
 # Essa mesma função vai servir para fazer insert em todas as colunas, baseado apenas no nome
