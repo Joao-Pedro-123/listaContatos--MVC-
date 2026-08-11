@@ -13,9 +13,26 @@ include_once("index.php");
 if (isset($_GET["id"])) {
     $id = intval($_GET["id"]);
     $user = getContactData($id);
-    $dados_user = $user["contato"];
-    print_r($dados_user["data_nasc"]);
+    $user2 = getContacts();
 
+    function data_treating($index, $secondindex) //Função para possibilitar uma rapidez na adição e alteração de um usuário
+    {
+        global $user2;
+        $data_users_treated = [];
+
+        foreach ($user2 as $data_users) {
+            // echo "<br>";
+            // echo $data_users["id_contato"] . "<br>";
+            // echo $data_users["nome"] . "<br>";
+            // echo $data_users["apelido"] . "<br>";
+
+            array_push($data_users_treated, [$data_users["id_contato"], $data_users["nome"], $data_users["apelido"]]);
+        }
+
+        return $data_users_treated[$index][$secondindex];
+    }
+
+    echo data_treating(0, 2);
 
     // for ($i = 0; $i < 4; $i++) {
     //     foreach ($user["email"] as $dados_user) {
@@ -69,24 +86,18 @@ if (isset($_GET["id"])) {
                 <a onclick="popupFormOpen()"> + </a>
             </div>
 
-            <a href="view.php?id=1">
-                <div class="contactListItem" id="1">
-                    <img class="contactListPhoto"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ECowJKykF42o6gD9CpzSM-4sXy7vadCAOb3OxT165g&s=10">
-                    <span class="contactName">João Pedro</span>
+            <?php
+            foreach ($user2 as $data_users) {
+                $nomeExibido = !empty($data_users['apelido']) ? $data_users['apelido'] : $data_users['nome'];
 
-                </div>
-            </a>
-            <a href="view.php?id=2">
-                <div class="contactListItem" id="2">
-                    <!-- Na verdade a section é o agrupamento dos dois blocos, e as duas divs são os blocos, entao teriamos apenas uma section-->
-                    <!-- Obrigado por explicar :] -->
-
-                    <img class="contactListPhoto"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ECowJKykF42o6gD9CpzSM-4sXy7vadCAOb3OxT165g&s=10">
-                    <span class="contactListName">Kauã Padin</span>
-                </div>
-            </a>
+                echo "<a href='view.php?id=" . $data_users["id_contato"] . "'>";
+                echo "<div class='contactListItem'>";
+                echo "<img class='contactListPhoto' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ECowJKykF42o6gD9CpzSM-4sXy7vadCAOb3OxT165g&s=10'>";
+                echo "<span class='contactName'>" . $nomeExibido . "</span>";
+                echo "</div>";
+                echo "</a>";
+            }
+            ?>
         </div>
 
         <!-- Quando a pessoa clicar em algum contato...
@@ -106,7 +117,7 @@ if (isset($_GET["id"])) {
                 <img class="contactInfoPhoto"
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ECowJKykF42o6gD9CpzSM-4sXy7vadCAOb3OxT165g&s=10">
                 <span class="contactInfoName">Zé</span>
-                <span id="mainTel"> 17 98835-8054 </span>
+                <span id="mainTel"> <?php echo $user["telefone"][0]["telefone"] ?> </span>
                 <img id="contactInfoBackGPhoto"
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxKZxvfZtHhz0N9M2g1qZDiTwF95L_mY2OoOIcP5zDOg&s=10">
             </div>
@@ -118,10 +129,8 @@ if (isset($_GET["id"])) {
                     <h5> Telefones </h5>
                     <?php
                     foreach ($user["telefone"] as $dados_user) {
-
                         echo "<div class='telItem'> <span>" . $dados_user['telefone'] . //Adicionar o mainTel aqui depois
                             "</span> <span>Obs: " . $dados_user["obs"] . "</span></div>";
-
                     }
                     ?>
                 </div>
@@ -153,23 +162,17 @@ if (isset($_GET["id"])) {
                 <!-- Nomes e outros-->
                 <div id="contactInfoNameAndAge">
                     <?php
-                        echo "<div class='telItem'> <span> <b> Nome Completo: </b>" . $user["contato"]["nome"]. //Adicionar o mainTel aqui
-                            "</span> <span> <b> Idade: </b>" .$user["contato"]["data_nasc"] . "</span></div>";
-                    
+                    echo "<div class='telItem'> <span> <b> Nome Completo: </b>" . $user["contato"]["nome"] . //Adicionar o mainTel aqui
+                        "</span> <span> <b> Idade: </b>" . $user["contato"]["data_nasc"] . "</span></div>";
                     ?>
-                    <!-- <div id="contactInfoObs"> <b> Obs: </b> João 3:16 </div> -->
                 </div>
                 <div id="contacInfoAdress">
                     <h5> Endereços </h5>
-                    <div class="adressItem">
-                        <span>Logradouro: Linux</span>
-                        <span>Numero: 3145</span>
-                        <span>Cidade: Nova Vila Velha</span>
-                        <span>Cep: 15804-080</span>
-                        <span>Complemento: Barril</span>
-                        <span>Obs: Barril pintado de verde escuro</span>
-                        <span>Ponto de Referência: Vila do Chaves</span>
-                    </div> <!-- adressItem-->
+                    <?php
+                    foreach ($user["endereco"] as $data_user) {
+                        echo "<div class='adressItem'> <span>Logradouro: " . $data_user["logradouro"] . "</span> <span>Numero: " . $data_user["numero"] . "</span> <span>Cidade: " . $data_user["cidade"] . "</span> <span>Cep:" . $data_user["cep"] . "</span> <span>Complemento: " . $data_user["complemento"] . "</span> <span>Obs: " . $data_user["obs"] . "</span><span>Ponto de Referência: " . $data_user["ponto_ref"] . "</span> </div>";
+                    }
+                    ?>
                 </div> <!-- ContactAdress-->
             </div> <!-- ContactInfoGTwo -->
         </div> <!-- ContactInfo -->

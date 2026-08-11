@@ -21,6 +21,11 @@ require_once('model.php');
         return $contactData;
     }
 
+    function getContacts(){
+        $contactDatas = read();
+        return $contactDatas;
+    }
+
     // $user = getContactData(1);
     // // $dados_user = $user["email"][0];
     // $dados_user = $user;
