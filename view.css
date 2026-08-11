@@ -344,6 +344,20 @@ dialog {
     }
 }
 
+/* Basic form Layout - Um input por linha */
+dialog form #inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+dialog #mainDialogInputs, dialog #extraDialogInputs > div {
+    display: flex;
+    flex-direction: column;
+}
+
+/**/
+
 a{
     text-decoration: none;
     cursor: pointer;
