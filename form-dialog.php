@@ -145,5 +145,41 @@ $dialog_create_email = '
 
     </dialog>
 ';
+
+$dialog_create_rede_social = '
+<dialog id=redeSocialPopupForm>
+        <h2>Nova Rede Social</h2>
+
+        <form method="post" action="controller.php?action=create_rede_social&id='. (isset($id) ? $id : "")  .'">
+
+            <div id="inputs">
+                <div id="extraDialogInputs">
+                    <div id="extraDialogInputsSocial">
+                        <h3>Rede Social</h3><br>
+                        <div>
+                            <label for="redesocialName"> Rede Social:</label>
+                            <input name="redesocialName" type="text">
+                        </div>
+
+                        <div>
+                            <label for="redesocialLink"> Link: </label>
+                            <input name="redesocialLink" type="text">
+                        </div>
+
+                        <div>
+                            <label for="redesocialObs"> Obs: </label>
+                            <input name="redesocialObs" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="dialogActionButtons">
+                <input type="submit" onclick="submit()" value="Adicionar">
+            </div>
+        </form>
+
+    </dialog>
+';
 ?>
 

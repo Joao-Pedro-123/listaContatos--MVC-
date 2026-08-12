@@ -42,6 +42,18 @@ if (isset($_GET['action'])) :
             // sleep(5);
             header('Location: controller.php');
             break;
+
+        case 'create_rede_social':
+            echo $_GET['id'];
+            echo print_r($_POST);
+
+            if (isset($_POST['redesocialName'])) {
+                criar_nova_rede_social($_GET['id'], $_POST);
+            }
+
+            // sleep(5);
+            header('Location: controller.php');
+            break;
     }
 
 else:
