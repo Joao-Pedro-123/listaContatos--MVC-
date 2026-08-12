@@ -27,76 +27,78 @@
                         <label for="data_nasc">Data de Nacimento: </label>
                         <input name="data_nasc" type="date">
                     </div>
-
-                    <div id="mainDialogInputsNumber">
-                        <label for="telefoneOne">Telefone: </label>
-                        <input name="telefoneOne" type="text" required> <br> <br>
-                    </div>
                 </div>
                 <hr>
+                <div id="mainDialogInputsNumber">
+                <h3>Telefone</h3><br>
+                    <div>
+                        <label for="telefone">Telefone: </label>
+                        <input name="telefone" type="text" required>
+                    </div>
+                    <div>
+                        <label for="telefone">Obs: </label>
+                        <input name="telefone" type="text">
+                    </div>
+                </div>
+
+                <hr>
+
                 <div id="extraDialogInputs">
                     <div id="extraDialogInputsEmails">
-                        <label for="emailOne"> Email:</label>
-                        <input name="emailOne" type="email">
+                        <h3>Correio Eletrônico</h3><br>
+                        <label for="email"> Email:</label>
+                        <input name="email" type="email">
 
-                        <label for="emailTwo"> Email: </label>
-                        <input name="emailTwo" type="email">
-                    </div> <br>
-
-                    <div id="extraDialogInputsNumbers">
-                        <label for="telefoneTwo"> Telefone 2:</label>
-                        <input name="telefoneTwo" type="text">
-
-                        <label for="telefoneThree"> Telefone 3: </label>
-                        <input name="telefoneThree" type="text">
-                    </div> <br>
-
-                    <div id="extraDialogInputsSocialM">
+                        <label for="emailObs"> Obs: </label>
+                        <input name="emailObs" type="text">
+                    </div>
+                <br><hr><br>
+                    <div id="extraDialogInputsSocial">
+                        <h3>Rede Social</h3><br>
                         <div>
-                            <label for="redesocialOneName"> Rede Social 1:</label>
-                            <input name="redesocialOneName" type="text">
-
-                            <label for="redesocialTwoName"> Rede Social 2: </label>
-                            <input name="redesocialTwoName" type="text">
+                            <label for="redesocialName"> Rede Social:</label>
+                            <input name="redesocialName" type="text">
                         </div>
 
                         <div>
-                            <label for="redesocialOneLink"> Link 1: </label>
-                            <input name="redesocialOneLink" type="text">
-
-
-                            <label for="redesocialTwoLink"> Link 2: </label>
-                            <input name="redesocialTwoLink" type="text">
+                            <label for="redesocialLink"> Link: </label>
+                            <input name="redesocialLink" type="text">
                         </div>
-                    </div> <br>
 
+                        <div>
+                            <label for="redesocialObs"> Obs: </label>
+                            <input name="redesocialObs" type="text">
+                        </div>
+                    </div>
+                <br><hr><br>
                     <div id="extraDialogInputsAdress">
-                        <label for="logradouroOne"> Logradouro 1: </label>
-                        <input name="logradouroOne" type="text">
+                        <h3>Endereço</h3><br>
+                        <label for="logradouro"> Logradouro: </label>
+                        <input name="logradouro" type="text">
 
-                        <label for="numeroOne"> Número 1: </label>
-                        <input name="numeroOne" type="text">
+                        <label for="numero"> Número: </label>
+                        <input name="numero" type="text">
 
-                        <label for="cidadeOne"> Cidade 1: </label>
-                        <input name="cidadeOne" type="text">
+                        <label for="cidade"> Cidade: </label>
+                        <input name="cidade" type="text">
 
-                        <label for="cepOne"> CEP 1: </label>
-                        <input name="cepOne" type="text">
+                        <label for="cep"> CEP: </label>
+                        <input name="cep" type="text">
 
-                        <label for="complementoOne"> Complemento 1: </label>
-                        <input name="complementoOne" type="text">
+                        <label for="complemento"> Complemento: </label>
+                        <input name="complemento" type="text">
 
-                        <label for="observacaoOne"> Observação 1: </label>
-                        <input name="observacaoOne" type="text">
+                        <label for="observacao"> Observação: </label>
+                        <input name="observacao" type="text">
 
-                        <label for="pontorefOne"> Ponto de Referência 1: </label>
-                        <input name="pontorefOne" type="text">
+                        <label for="pontoref"> Ponto de Referência: </label>
+                        <input name="pontoref" type="text">
                     </div> <br>
                 </div>
             </div>
 
             <div id="dialogActionButtons">
-                <input type="submit" onclick="submit()" value="Ação">
+                <input type="submit" onclick="submit()" value="Adicionar">
             </div>
         </form>
 

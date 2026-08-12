@@ -1,10 +1,10 @@
 # Funcionalidades necessárias para o View
 
 ## O VIEW é a GUI Para o CRUD:
-- [ ] Adicionar novo contato
-    - [ ] Definir interface basica
-    - [ ] Definir como os dados serão salvos e enviados para o controller
+- [ ] Adicionar novo contato `Work In Progress`
+    - [x] Definir interface basica
+    - [ ] Definir como os dados serão salvos e enviados para o controller `Work In Progress`
 - [ ] Deletar um Contato
 - [ ] Editar todos os campos de um Contato Existente
-- [ ] Ver todos os dados de um contato
+- [x] Ver todos os dados de um contato
 
