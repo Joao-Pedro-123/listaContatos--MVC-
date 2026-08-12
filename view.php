@@ -9,7 +9,10 @@
 </head>
 <body>
     
-    <?php echo $dialog; ?>
+    <?php  
+    echo $dialog_create_contato;
+    echo $dialog_create_telefone;
+    ?>
 
     <nav> <span> Olá, <b> User </b> </span> <span> <!-- Icone --> </span></nav>
     <!-- Navbar. Space Between nos estilos dps -->
@@ -134,10 +137,10 @@
 </body>
 <script>
     const contatoFormDialog = document.getElementById('contatoPopupForm');
-    const telefoneFormDialog = document.getElementById('contatoPopupForm');
-    const emailFormDialog = document.getElementById('contatoPopupForm');
-    const redeSocialFormDialog = document.getElementById('contatoPopupForm');
-    const enderecoFormDialog = document.getElementById('contatoPopupForm');
+    const telefoneFormDialog = document.getElementById('telefonePopupForm');
+    const emailFormDialog = document.getElementById('emailPopupForm');
+    const redeSocialFormDialog = document.getElementById('redeSocialPopupForm');
+    const enderecoFormDialog = document.getElementById('enderecoPopupForm');
 
     function popupFormOpen(tipo) {
         switch (tipo) {

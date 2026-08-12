@@ -97,10 +97,10 @@ $dialog_create_contato = '
     </dialog>
 ';
 
-$dialog_novo_telefone = '
+$dialog_create_telefone = '
 <dialog id=telefonePopupForm>
         <h2>Adicionar telefone</h2>
-        <form method="post" action="controller.php?action=create_telefone">
+        <form method="post" action="controller.php?action=create_telefone&id='. (isset($id) ? $id : "")  .'">
                 <div id="mainDialogInputsNumber">
                 <h3>Telefone</h3><br>
                     <div>
