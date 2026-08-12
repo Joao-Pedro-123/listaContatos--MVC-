@@ -152,17 +152,21 @@ if (isset($_GET["id"])) {
             </div>
 
             <?php
-            foreach ($user2 as $data_users) {
-                $nomeExibido = !empty($data_users['apelido']) ? $data_users['apelido'] : $data_users['nome'];
+                foreach ($user2 as $data_users) {
+                    $nomeExibido = !empty($data_users['apelido']) ? $data_users['apelido'] : $data_users['nome'];
 
-                echo "<a href='view.php?id=" . $data_users["id_contato"] . "'>";
-                echo "<div class='contactListItem'>";
-                echo "<img class='contactListPhoto' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ECowJKykF42o6gD9CpzSM-4sXy7vadCAOb3OxT165g&s=10'>";
-                echo "<span class='contactName'>" . $nomeExibido . "</span>";
-                echo "</div>";
-                echo "</a>";
-            }
+                    echo "<a href='view.php?id=" . $data_users["id_contato"] . "'>";
+                    echo "<div class='contactListItem'>";
+                    echo "<img class='contactListPhoto' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ECowJKykF42o6gD9CpzSM-4sXy7vadCAOb3OxT165g&s=10'>";
+                    echo "<span class='contactName'>" . $nomeExibido . "</span>";
+                    echo "</div>";
+                    echo "</a>";
+                }
             ?>
+            <!-- <div id="noDataDiv">
+                <img id="noDataImg" src="user.png"> <br>
+                <span> NÃO HÁ NENHUM CONTATO ADICIONADO AINDA! </span>
+            </div> ADICIONA ISSO DEPOIS ✅ --> 
         </div>
 
         <!-- Quando a pessoa clicar em algum contato...
@@ -181,14 +185,14 @@ if (isset($_GET["id"])) {
             <div id="contactInfoHeading">
                 <img class="contactInfoPhoto"
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ECowJKykF42o6gD9CpzSM-4sXy7vadCAOb3OxT165g&s=10">
-                <span class="contactInfoName"><?php echo $user["contato"]["nome"] ?></span>
+                <span class="contactInfoName"><?php echo $user["contato"]["apelido"] ?></span>
                 <span id="mainTel"> <?php echo $user["telefone"][0]["telefone"] ?> </span>
                 <img id="contactInfoBackGPhoto"
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxKZxvfZtHhz0N9M2g1qZDiTwF95L_mY2OoOIcP5zDOg&s=10">
             </div>
 
             <div id="contactInfoGOne">
-                <!-- Primeiro grupo de informações. Este contém telefone, e-mail e redes socias. GOne significa Group One-->
+                <!-- Primeiro grupo de informações. Este     contém telefone, e-mail e redes socias. GOne significa Group One-->
                 <!-- Telephones -->
                 <div id="contactInfoTel">
                     <h5> Telefones </h5>

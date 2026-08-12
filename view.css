@@ -327,7 +327,7 @@ dialog {
     width: 50%;
     height: 70%;
     margin: auto;
-    overflow:auto;
+    overflow: auto;
     background-color: rgb(232, 255, 255);
     border: 5px solid rgb(0, 90, 90);
     border-radius: 1.5em;
@@ -344,13 +344,31 @@ dialog {
     }
 }
 
-a{
+a {
     text-decoration: none;
     cursor: pointer;
 }
 
-#inputs{
+#inputs {
     overflow-wrap: scroll;
     height: 10%;
     overflow-x: hidden;
+}
+
+
+#noDataDiv {
+
+    *{
+        opacity: 0.5;
+    }   
+
+    img {
+        width: 7em;
+        height: 7em;
+    }
+
+    span{
+        color: rgb(0, 0, 0);
+        font-weight: 700;
+    }
 }

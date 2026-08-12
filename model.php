@@ -36,7 +36,7 @@ function verify_tables(){
 }}
 
 # Essa mesma função vai servir para fazer insert em todas as colunas, baseado apenas no nome
-function create($tabela, $valores)
+function create_contato($tabela, $valores)
 {
 
     global $conexao; // Pega a variável definida no escopo global pelo include_once("conexao.php");
