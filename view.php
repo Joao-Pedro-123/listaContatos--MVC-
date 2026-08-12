@@ -7,43 +7,6 @@
     <link rel="stylesheet" href="view.css">
     <title>Document</title>
 </head>
-<?php
-include_once("index.php");
-
-if (isset($_GET["id"])) {
-    $id = intval($_GET["id"]);
-    $user = getContactData($id);
-    $user2 = getContacts();
-
-    function data_treating($index, $secondindex) //Função para possibilitar uma rapidez na adição e alteração de um usuário
-    {
-        global $user2;
-        $data_users_treated = [];
-
-        foreach ($user2 as $data_users) {
-            // echo "<br>";
-            // echo $data_users["id_contato"] . "<br>";
-            // echo $data_users["nome"] . "<br>";
-            // echo $data_users["apelido"] . "<br>";
-
-            array_push($data_users_treated, [$data_users["id_contato"], $data_users["nome"], $data_users["apelido"]]);
-        }
-
-        return $data_users_treated[$index][$secondindex];
-    }
-
-    echo data_treating(0, 2);
-
-    // for ($i = 0; $i < 4; $i++) {
-    //     foreach ($user["email"] as $dados_user) {
-    //         echo "<div class='emailItem'> <span>" . $dados_user['email'];
-    //         "</span> <span>Obs:" . $dados_user["obs"] . "</span></div>";
-    //     }
-    // }
-}
-
-?>
-
 <body>
     <dialog id="popupForm">
         <h2>Titulo do dialog</h2>
@@ -152,10 +115,10 @@ if (isset($_GET["id"])) {
             </div>
 
             <?php
-                foreach ($user2 as $data_users) {
+                foreach ($userList as $data_users) {
                     $nomeExibido = !empty($data_users['apelido']) ? $data_users['apelido'] : $data_users['nome'];
 
-                    echo "<a href='view.php?id=" . $data_users["id_contato"] . "'>";
+                    echo "<a href='controller.php?id=" . $data_users["id_contato"] . "'>";
                     echo "<div class='contactListItem'>";
                     echo "<img class='contactListPhoto' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ECowJKykF42o6gD9CpzSM-4sXy7vadCAOb3OxT165g&s=10'>";
                     echo "<span class='contactName'>" . $nomeExibido . "</span>";

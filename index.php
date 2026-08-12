@@ -22,7 +22,7 @@ function getContactData($id)
     return $contactData;
 }
 
-function getContacts()
+function getContactList()
 {
     $contactDatas = read();
     return $contactDatas;
