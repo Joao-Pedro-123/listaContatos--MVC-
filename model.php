@@ -42,6 +42,47 @@ function verify_tables(){
 ////////////////////
 
 # Essa mesma função vai servir para fazer insert em todas as colunas, baseado apenas no nome
+function create_contato($tabelas_add)
+{
+    global $conexao; // Pega a variável definida no escopo global pelo include_once("conexao.php");
+    global $tabelas; // Pega a lookup table
+    $tabelas_consulta = [];
+    $queryGroup = [];
+    # Pega as colunas da tabela usando a lookup table
+
+    foreach ($tabelas_add as $tabela_add) { //É necessário adaptar os números para não sair como texto no implode.
+        $colunas = [];
+        foreach ($tabela_add as $coluna_add) {
+            $colunas_add[] = $coluna_add;
+            $colunas = implode("`, `", $colunas_add);
+            foreach ($coluna_add as $valor_add) {
+                $valores_add[] = $valor_add;
+                $valores = implode("`, `", $valores_add);
+            }
+        }
+        $queryGroup[] = "INSERT INTO `$tabela_add` (`$colunas`) VALUES ('$valores');";
+    }
+
+    foreach ($colunas as $coluna) {
+        $colunasnew += $tabelas[$coluna];
+    }
+
+    # Cerca cada um das colunas e valores com '' e ``
+    // $colunas = implode("`, `", $colunasnew);
+    // $valores = implode("', '", $valores);
+
+    # Prepara a query dinamicamente
+    // $query = "INSERT INTO `$tabela` (`$colunas`) VALUES ('$valores');";
+
+    // echo $query;
+
+    // # Colocar try-catch aqui??
+    // $resultado = @mysqli_query($conexao, $query);
+
+    // # Só não sei como tratar do resultado
+    // return $resultado;
+}
+
 function create($tabela, $valores)
 {
 
@@ -51,12 +92,8 @@ function create($tabela, $valores)
     # Pega as colunas da tabela usando a lookup table
     $colunas = $tabelas[$tabela];
 
-    foreach ($colunas as $coluna) {
-        $colunasnew += $tabelas[$coluna];
-    }
-
     # Cerca cada um das colunas e valores com '' e ``
-    $colunas = implode("`, `", $colunasnew);
+    $colunas = implode("`, `", $colunas);
     $valores = implode("', '", $valores);
 
     # Prepara a query dinamicamente
