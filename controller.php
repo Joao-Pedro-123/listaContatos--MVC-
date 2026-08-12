@@ -30,6 +30,18 @@ if (isset($_GET['action'])) :
             // sleep(5);
             header('Location: controller.php');
             break;
+
+        case 'create_email':
+            echo $_GET['id'];
+            echo print_r($_POST);
+
+            if (isset($_POST['email'])) {
+                criar_novo_email($_GET['id'], $_POST);
+            }
+
+            // sleep(5);
+            header('Location: controller.php');
+            break;
     }
 
 else:

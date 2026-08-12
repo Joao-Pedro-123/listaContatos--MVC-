@@ -12,6 +12,7 @@
     <?php  
     echo $dialog_create_contato;
     echo $dialog_create_telefone;
+    echo $dialog_create_email;
     ?>
 
     <nav> <span> Olá, <b> User </b> </span> <span> <!-- Icone --> </span></nav>

@@ -118,4 +118,32 @@ $dialog_create_telefone = '
         </form>
     </dialog>
 ';
+
+$dialog_create_email = '
+<dialog id=emailPopupForm>
+        <h2>Novo Email</h2>
+
+        <form method="post" action="controller.php?action=create_email&id='. (isset($id) ? $id : "")  .'">
+
+            <div id="inputs">
+                <div id="extraDialogInputs">
+                    <div id="extraDialogInputsEmails">
+                        <h3>Correio Eletrônico</h3><br>
+                        <label for="email"> Email:</label>
+                        <input name="email" type="email">
+
+                        <label for="emailObs"> Obs: </label>
+                        <input name="emailObs" type="text">
+                    </div>
+                </div>
+            </div>
+
+            <div id="dialogActionButtons">
+                <input type="submit" onclick="submit()" value="Adicionar">
+            </div>
+        </form>
+
+    </dialog>
+';
 ?>
+
