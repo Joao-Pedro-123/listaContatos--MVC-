@@ -10,32 +10,6 @@ $tabelas = [
     "telefone" => ['id_contato', 'telefone', 'obs']
 ];
 
-// Comenta o código pfv
-function verify_tables(){
-    $avaliable_colunas = [];
-    $avaliable_tabelas = [];
-    global $tabelas;
-
-    foreach ($tabelas as $tabela) {
-        $valorfilled = 0;
-       foreach ($tabela as $coluna) {
-            if (empty($_POST[$coluna])){
-                continue;   
-            } 
-
-            $avaliable_colunas[] = $_POST[$coluna];
-            $valorfilled++;
-            }
-
-        if($valorfilled === 0){
-            $avaliable_tabelas[] = 0;
-        } else{
-            $avaliable_tabelas[] = $avaliable_colunas;
-            }
-            
-        $avaliable_colunas = [];
-}}
-
 
 ////////////////////
 /// FUNÇÕES CRUD ///
