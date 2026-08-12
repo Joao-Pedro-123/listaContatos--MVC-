@@ -1,7 +1,7 @@
 <?php
 include_once("conexao.php"); //Com este comando nós podemos utiliza a variável $conexão disponível no arquivo "conexão.php" e importar dentro das funções com 'global $conexao'
 
-# Essa lookup table mapeia todas as colunas para fácil inserção nelas usando o nome da tabela.
+# Essa lookup table mapeia todas as colunas para fácil busca nelas usando o nome da tabela.
 $tabelas = [
     "contato" => ['nome', 'apelido', 'data_nasc'],
     "email" => ['id_contato', 'email', 'obs'],

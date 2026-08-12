@@ -5,6 +5,54 @@ require_once('model.php');
 <h1>Insert (Create)</h1>
 <?php
 // create("email", [1, 'paulo-victor@gut', 'envie apenas documentos .ods']);
+
+function criar_novo_telefone($id, $fd){
+    return create("telefone", [$id, $fd['telefone'], $fd['telefoneObs']]);
+}
+
+function criar_novo_email($id, $fd){
+    return create("email", [$id, $fd['email'], $fd['emailObs']]);
+}
+
+function criar_nova_rede_social($id, $fd){
+    return create("rede_social", [$id, $fd['redesocialName'], $fd['redesocialLink'], $fd['redesocialObs']]);
+}
+
+function criar_novo_endereco($id, $fd){
+    return create("endereco", [$id, $fd['logradouro'], $fd['numero'], $fd['cidade'], $fd['cep'], $fd['complemento'], $fd['observacao'], $fd['pontoref']]);
+}
+
+// Essa função se refere ao dialog, após clicar no form essa função será executada: action="controller.php?action=create&data=..."
+function criar_novo_contato($form_data)
+{
+    global $conexao; // Pega a variável definida no escopo global pelo include_once("conexao.php");
+    global $tabelas; // Pega a lookup table
+
+    $fd = $form_data; // Para abreviar
+
+    $dados_do_contato = [$fd['nome'], $fd['apelido'], $fd['data_nasc']];
+    create("contato", $dados_do_contato);
+
+    $id = mysqli_insert_id($conexao); // id do contato inserido (para associar os dados à ele no banco!)
+
+    if (isset($form_data['telefone'])){
+        criar_novo_telefone($id, $form_data);
+    }
+    
+    if (isset($form_data['email'])){
+        criar_novo_email($id, $form_data);
+    }
+    
+    if (isset($form_data['redesocialName'])){
+        criar_nova_rede_social($id, $form_data);
+    }
+    
+    if (isset($form_data['cidade'])){
+        criar_novo_endereco($id, $form_data);
+    }
+
+    // return $resultado;
+}
 ?>
 
 <h1>Select (Read)</h1> -->

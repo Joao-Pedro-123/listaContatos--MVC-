@@ -11,7 +11,7 @@
     <dialog id="popupForm">
         <h2>Titulo do dialog</h2>
 
-        <form method="post" action="#">
+        <form method="post" action="controller.php?action=novo_contato">
 
             <div id="inputs">
                 <div id="mainDialogInputs">
@@ -36,8 +36,8 @@
                         <input name="telefone" type="text" required>
                     </div>
                     <div>
-                        <label for="telefone">Obs: </label>
-                        <input name="telefone" type="text">
+                        <label for="telefoneObs">Obs: </label>
+                        <input name="telefoneObs" type="text">
                     </div>
                 </div>
 
@@ -144,10 +144,15 @@
             Como faríamos para um lado existir a lista, e do outro existir as informações adicionais?
             Bom, usando o id do link que referencia um objeto
             -->
-
         <div id="contactInfo">
             <!-- Heading Bar -->
             <div id="contactInfoHeading">
+            <?php
+            if (! isset($id)) {
+                echo "<h1>Selecione um Contato na Lista</h1>";
+                die();
+            }
+            ?>
                 <img class="contactInfoPhoto"
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ECowJKykF42o6gD9CpzSM-4sXy7vadCAOb3OxT165g&s=10">
                 <span class="contactInfoName"><?php echo $user["contato"]["apelido"] ?></span>
