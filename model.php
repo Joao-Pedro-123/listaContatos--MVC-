@@ -38,6 +38,34 @@ function verify_tables(){
 # Essa mesma função vai servir para fazer insert em todas as colunas, baseado apenas no nome
 function create_contato($tabela, $valores)
 {
+    global $conexao; // Pega a variável definida no escopo global pelo include_once("conexao.php");
+    global $tabelas; // Pega a lookup table
+
+    # Pega as colunas da tabela usando a lookup table
+    $colunas = $tabelas[$tabela];
+
+    foreach ($colunas as $coluna) {
+        $colunasnew += $tabelas[$coluna];
+    }
+
+    # Cerca cada um das colunas e valores com '' e ``
+    $colunas = implode("`, `", $colunasnew);
+    $valores = implode("', '", $valores);
+
+    # Prepara a query dinamicamente
+    $query = "INSERT INTO `$tabela` (`$colunas`) VALUES ('$valores');";
+
+    echo $query;
+
+    # Colocar try-catch aqui??
+    $resultado = @mysqli_query($conexao, $query);
+
+    # Só não sei como tratar do resultado
+    return $resultado;
+}
+
+function create($tabela, $valores)
+{
 
     global $conexao; // Pega a variável definida no escopo global pelo include_once("conexao.php");
     global $tabelas; // Pega a lookup table
