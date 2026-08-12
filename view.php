@@ -8,101 +8,8 @@
     <title>Document</title>
 </head>
 <body>
-    <dialog id="popupForm">
-        <h2>Titulo do dialog</h2>
-
-        <form method="post" action="controller.php?action=novo_contato">
-
-            <div id="inputs">
-                <div id="mainDialogInputs">
-                    <div id="mainDialogInputsName">
-                        <label for="nome">Nome:</label>
-                        <input name="nome" type="text" requires>
-                    </div>
-                    <div id="mainDialogInputsNick">
-                        <label for="apelido">Apelido: </label>
-                        <input name="apelido" type="text">
-                    </div>
-                    <div id="mainDialogInputsBirth">
-                        <label for="data_nasc">Data de Nacimento: </label>
-                        <input name="data_nasc" type="date">
-                    </div>
-                </div>
-                <hr>
-                <div id="mainDialogInputsNumber">
-                <h3>Telefone</h3><br>
-                    <div>
-                        <label for="telefone">Telefone: </label>
-                        <input name="telefone" type="text" required>
-                    </div>
-                    <div>
-                        <label for="telefoneObs">Obs: </label>
-                        <input name="telefoneObs" type="text">
-                    </div>
-                </div>
-
-                <hr>
-
-                <div id="extraDialogInputs">
-                    <div id="extraDialogInputsEmails">
-                        <h3>Correio Eletrônico</h3><br>
-                        <label for="email"> Email:</label>
-                        <input name="email" type="email">
-
-                        <label for="emailObs"> Obs: </label>
-                        <input name="emailObs" type="text">
-                    </div>
-                <br><hr><br>
-                    <div id="extraDialogInputsSocial">
-                        <h3>Rede Social</h3><br>
-                        <div>
-                            <label for="redesocialName"> Rede Social:</label>
-                            <input name="redesocialName" type="text">
-                        </div>
-
-                        <div>
-                            <label for="redesocialLink"> Link: </label>
-                            <input name="redesocialLink" type="text">
-                        </div>
-
-                        <div>
-                            <label for="redesocialObs"> Obs: </label>
-                            <input name="redesocialObs" type="text">
-                        </div>
-                    </div>
-                <br><hr><br>
-                    <div id="extraDialogInputsAdress">
-                        <h3>Endereço</h3><br>
-                        <label for="logradouro"> Logradouro: </label>
-                        <input name="logradouro" type="text">
-
-                        <label for="numero"> Número: </label>
-                        <input name="numero" type="text">
-
-                        <label for="cidade"> Cidade: </label>
-                        <input name="cidade" type="text">
-
-                        <label for="cep"> CEP: </label>
-                        <input name="cep" type="text">
-
-                        <label for="complemento"> Complemento: </label>
-                        <input name="complemento" type="text">
-
-                        <label for="observacao"> Observação: </label>
-                        <input name="observacao" type="text">
-
-                        <label for="pontoref"> Ponto de Referência: </label>
-                        <input name="pontoref" type="text">
-                    </div> <br>
-                </div>
-            </div>
-
-            <div id="dialogActionButtons">
-                <input type="submit" onclick="submit()" value="Adicionar">
-            </div>
-        </form>
-
-    </dialog>
+    
+    <?php echo $dialog; ?>
 
     <nav> <span> Olá, <b> User </b> </span> <span> <!-- Icone --> </span></nav>
     <!-- Navbar. Space Between nos estilos dps -->
@@ -113,7 +20,7 @@
         <div id="listContacts">
             <div id="listContactsHeader">
                 <h4> Contatos </h4>
-                <a onclick="popupFormOpen()"> + </a>
+                <a onclick="popupFormOpen('contato')" > + </a>
             </div>
 
             <?php
@@ -165,7 +72,9 @@
                 <!-- Primeiro grupo de informações. Este     contém telefone, e-mail e redes socias. GOne significa Group One-->
                 <!-- Telephones -->
                 <div id="contactInfoTel">
-                    <h5> Telefones </h5>
+                    <h5> Telefones </h5> 
+                    <a onclick="popupFormOpen('telefone')"> + </a>
+                    <!-- <a href="controller.php?action=create_telefone&id=<?php echo $id; ?>" class="addBtn"> + </a> -->
                     <?php
                     foreach ($user["telefone"] as $dados_user) {
                         echo "<div class='telItem'> <span>" . $dados_user['telefone'] . //Adicionar o mainTel aqui depois
@@ -177,6 +86,8 @@
                 <!-- Emails -->
                 <div id="contactInfoEmail">
                     <h5> E-mails </h5>
+                    <!-- <a href="controller.php?action=create_email&id=<?php echo $id; ?>" class="addBtn"> + </a> -->
+                     <a onclick="popupFormOpen('email')"> + </a>
                     <?php
                     foreach ($user["email"] as $dados_user) {
                         echo "<div class='emailItem'> <span>" . $dados_user['email'] .
@@ -188,6 +99,8 @@
                 <!-- Social Media -->
                 <div id="contactInfoSocialMedia">
                     <h5> Redes Sociais </h5>
+                    <!-- <a href="controller.php?action=create_rede_social&id=<?php echo $id; ?>" class="addBtn"> + </a> -->
+                     <a onclick="popupFormOpen('rede_social')"> + </a>
                     <?php
                     foreach ($user["rede_social"] as $dados_user) {
                         echo "<div class='socialMediaItem'> <span> Nome: " . $dados_user['nome_rede_social'] . //Adicionar o mainTel aqui
@@ -207,6 +120,8 @@
                 </div>
                 <div id="contacInfoAdress">
                     <h5> Endereços </h5>
+                    <!-- <a href="controller.php?action=create_endereco&id=<?php echo $id; ?>" class="addBtn"> + </a> -->
+                    <a onclick="popupFormOpen('endereco')"> + </a>
                     <?php
                     foreach ($user["endereco"] as $data_user) {
                         echo "<div class='adressItem'> <span>Logradouro: " . $data_user["logradouro"] . "</span> <span>Numero: " . $data_user["numero"] . "</span> <span>Cidade: " . $data_user["cidade"] . "</span> <span>Cep:" . $data_user["cep"] . "</span> <span>Complemento: " . $data_user["complemento"] . "</span> <span>Obs: " . $data_user["obs"] . "</span><span>Ponto de Referência: " . $data_user["ponto_ref"] . "</span> </div>";
@@ -218,15 +133,38 @@
     </section> <!-- Grupo dos Blocos -->
 </body>
 <script>
-    const formDialog = document.getElementById("popupForm");
+    const contatoFormDialog = document.getElementById('contatoPopupForm');
+    const telefoneFormDialog = document.getElementById('contatoPopupForm');
+    const emailFormDialog = document.getElementById('contatoPopupForm');
+    const redeSocialFormDialog = document.getElementById('contatoPopupForm');
+    const enderecoFormDialog = document.getElementById('contatoPopupForm');
 
-
-    function popupFormOpen() {
-        formDialog.showModal();
+    function popupFormOpen(tipo) {
+        switch (tipo) {
+            case 'contato':
+                contatoFormDialog.showModal();
+                break;
+            case 'telefone':
+                telefoneFormDialog.showModal();
+                break;
+            case 'email':
+                emailFormDialog.showModal();
+                break;
+            case 'rede_social':
+                redeSocialFormDialog.showModal();
+                break;
+            case 'endereco':
+                enderecoFormDialog.showModal();
+                break;
+        }
     };
 
     function submit() {
-        formDialog.close();
+        contatoFormDialog.close();
+        telefoneFormDialog.close()
+        emailFormDialog.close()
+        redeSocialFormDialog.close()
+        enderecoFormDialog.close()
     };
 </script>
 
