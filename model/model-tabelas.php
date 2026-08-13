@@ -11,10 +11,10 @@ function getContactData($id)
 {
     $condition = 'id_contato = ' . $id;
     $contactData["contato"] = read_json('*', 'contato', $condition)[0];
-    $contactData["email"] = read_json('email, obs', 'email', $condition);
-    $contactData["rede_social"] = read_json('link, nome_rede_social, obs', 'rede_social', $condition);
-    $contactData["endereco"] = read_json('logradouro, numero, cidade, cep, complemento, obs, ponto_ref', 'endereco', $condition);
-    $contactData["telefone"] = read_json('telefone, obs', 'telefone', $condition);
+    $contactData["email"] = read_json('*', 'email', $condition);
+    $contactData["rede_social"] = read_json('*', 'rede_social', $condition);
+    $contactData["endereco"] = read_json('*', 'endereco', $condition);
+    $contactData["telefone"] = read_json('*', 'telefone', $condition);
     return $contactData;
 }
 

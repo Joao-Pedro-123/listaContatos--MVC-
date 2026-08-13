@@ -12,7 +12,7 @@ if (isset($_GET['action'])) :
             echo "<hr>";
             
             // redireciona para a página principal novamente
-            header('Location: controller.php');
+            header('Location: controller.php?id='. $_GET['id']);
             break;
         
         case 'create_telefone':
@@ -25,7 +25,7 @@ if (isset($_GET['action'])) :
             }
 
             // redireciona para a página principal novamente
-            header('Location: controller.php');
+            header('Location: controller.php?id='. $_GET['id']);
             break;
 
         case 'create_email':
@@ -38,7 +38,7 @@ if (isset($_GET['action'])) :
             }
 
             // redireciona para a página principal novamente
-            header('Location: controller.php');
+            header('Location: controller.php?id='. $_GET['id']);
             break;
 
         case 'create_rede_social':
@@ -50,7 +50,7 @@ if (isset($_GET['action'])) :
             }
 
             // redireciona para a página principal novamente
-            header('Location: controller.php');
+            header('Location: controller.php?id='. $_GET['id']);
             break;
 
         case 'novo_endereco':
@@ -63,7 +63,7 @@ if (isset($_GET['action'])) :
             }
 
             // redireciona para a página principal novamente
-            header('Location: controller.php');
+            header('Location: controller.php?id='. $_GET['id']);
             break;
         
         case 'delete_contato':
@@ -74,8 +74,16 @@ if (isset($_GET['action'])) :
             delete_contato($_GET['id']);
 
             // redireciona para a página principal novamente
-            header('Location: controller.php');
+            header('Location: controller.php?id='. $_GET['id']);
             break;
+
+        case 'delete_user_data':
+            $item_id = $_GET['user_data_id'];
+            $tabela = $_GET['tabela'];
+
+            delete($tabela, 'id_'. $tabela . '=' . $item_id);
+
+            header('Location: controller.php?id='. $_GET['id']);
     }
 
 else:
@@ -87,7 +95,10 @@ else:
         $user = getContactData($id);
         }
     
-        // todos os dialogs de forms ficam guardados aqui
+        
+    // print_r($user);
+        
+    // todos os dialogs de forms ficam guardados aqui
     include "form-dialog.php";
 
     $userList = getContactList();

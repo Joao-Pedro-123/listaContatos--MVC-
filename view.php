@@ -85,7 +85,9 @@
                     <?php
                     foreach ($user["telefone"] as $dados_user) {
                         echo "<div class='telItem'> <span>" . $dados_user['telefone'] . //Adicionar o mainTel aqui depois
-                            "</span> <span>Obs: " . $dados_user["obs"] . "</span></div>";
+                            "</span> <span>Obs: " . $dados_user["obs"] . "</span>
+                            <a href='controller.php?action=delete_user_data&tabela=telefone&id=". $id ."&user_data_id=". $dados_user['id_telefone'] ."'>[Apagar]</a>
+                            </div>";
                     }
                     ?>
                 </div>
@@ -98,7 +100,9 @@
                     <?php
                     foreach ($user["email"] as $dados_user) {
                         echo "<div class='emailItem'> <span>" . $dados_user['email'] .
-                            "</span> <span>Obs: " . $dados_user["obs"] . "</span></div>";
+                            "</span> <span>Obs: " . $dados_user["obs"] . "</span>
+                            <a href='controller.php?action=delete_user_data&tabela=email&id=". $id ."&user_data_id=". $dados_user['id_email'] ."'>[Apagar]</a>
+                            </div>";
                     }
                     ?>
                 </div>
@@ -109,9 +113,11 @@
                     <!-- <a href="controller.php?action=create_rede_social&id=<?php echo $id; ?>" class="addBtn"> + </a> -->
                      <a onclick="popupFormOpen('rede_social')"> + </a>
                     <?php
-                    foreach ($user["rede_social"] as $dados_user) {
+                    foreach ($user["rede_social"] as $rede_social_id => $dados_user) {
                         echo "<div class='socialMediaItem'> <span> Nome: " . $dados_user['nome_rede_social'] . //Adicionar o mainTel aqui
-                            "</span> <span>Link: " . $dados_user["link"] . "</span> <span>Obs:  " . $dados_user["obs"] . "</span> </div>";
+                            "</span> <span>Link: " . $dados_user["link"] . "</span> <span>Obs:  " . $dados_user["obs"] . "</span>
+                            <a href='controller.php?action=delete_user_data&tabela=rede_social&id=". $id ."&user_data_id=". $dados_user['id_rede_social'] ."'>[Apagar]</a>
+                            </div>";
                     }
                     ?>
                 </div>
@@ -131,7 +137,9 @@
                     <a onclick="popupFormOpen('endereco')"> + </a>
                     <?php
                     foreach ($user["endereco"] as $data_user) {
-                        echo "<div class='adressItem'> <span>Logradouro: " . $data_user["logradouro"] . "</span> <span>Numero: " . $data_user["numero"] . "</span> <span>Cidade: " . $data_user["cidade"] . "</span> <span>Cep:" . $data_user["cep"] . "</span> <span>Complemento: " . $data_user["complemento"] . "</span> <span>Obs: " . $data_user["obs"] . "</span><span>Ponto de Referência: " . $data_user["ponto_ref"] . "</span> </div>";
+                        echo "<div class='adressItem'> <span>Logradouro: " . $data_user["logradouro"] . "</span> <span>Numero: " . $data_user["numero"] . "</span> <span>Cidade: " . $data_user["cidade"] . "</span> <span>Cep:" . $data_user["cep"] . "</span> <span>Complemento: " . $data_user["complemento"] . "</span> <span>Obs: " . $data_user["obs"] . "</span><span>Ponto de Referência: " . $data_user["ponto_ref"] . "</span>
+                        <a href='controller.php?action=delete_user_data&tabela=endereco&id=". $id ."&user_data_id=". $data_user['id_endereco'] ."'>[Apagar]</a>
+                        </div>";
                     }
                     ?>
                 </div> <!-- ContactAdress-->
