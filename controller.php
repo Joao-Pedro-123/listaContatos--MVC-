@@ -1,6 +1,5 @@
 <?php
 
-include_once "index.php";
 include_once "model/model-tabelas.php";
 
 // With this, the default 'action' is to show the page as usual:
