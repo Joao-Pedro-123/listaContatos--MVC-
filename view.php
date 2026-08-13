@@ -140,12 +140,14 @@
     </section> <!-- Grupo dos Blocos -->
 </body>
 <script>
+    // Um popup para cada tabela ser criada
     const contatoFormDialog = document.getElementById('contatoPopupForm');
     const telefoneFormDialog = document.getElementById('telefonePopupForm');
     const emailFormDialog = document.getElementById('emailPopupForm');
     const redeSocialFormDialog = document.getElementById('redeSocialPopupForm');
     const enderecoFormDialog = document.getElementById('enderecoPopupForm');
 
+    // O popup a ser aberto entra como argumento
     function popupFormOpen(tipo) {
         switch (tipo) {
             case 'contato':

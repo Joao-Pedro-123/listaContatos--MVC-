@@ -1,10 +1,7 @@
 <?php
 
-include_once "conexao.php";
 include_once "index.php";
-include_once "model.php";
-
-
+include_once "model/model-tabelas.php";
 
 // With this, the default 'action' is to show the page as usual:
 if (isset($_GET['action'])) :
@@ -84,13 +81,19 @@ if (isset($_GET['action'])) :
 
 else:
     
+    // Renderiza a view padrão
+
     if (isset($_GET["id"])) {
         $id = intval($_GET["id"]);
         $user = getContactData($id);
         }
     
+        // todos os dialogs de forms ficam guardados aqui
     include "form-dialog.php";
+
     $userList = getContactList();
+
+    // O código php da view é trazido para cá, e a view pode acessar a variável $user, $id e $userList
     include "view.php";
 
 endif;
