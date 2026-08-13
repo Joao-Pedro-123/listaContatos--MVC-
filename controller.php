@@ -69,6 +69,17 @@ if (isset($_GET['action'])) :
             // redireciona para a página principal novamente
             header('Location: controller.php');
             break;
+        
+        case 'delete_contato':
+            echo $_GET['id'];
+            echo print_r($_POST);
+
+            // Ação no banco (model)
+            delete_contato($_GET['id']);
+
+            // redireciona para a página principal novamente
+            header('Location: controller.php');
+            break;
     }
 
 else:

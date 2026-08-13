@@ -70,6 +70,7 @@
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ECowJKykF42o6gD9CpzSM-4sXy7vadCAOb3OxT165g&s=10">
                 <span class="contactInfoName"><?php echo $user["contato"]["apelido"] ?></span>
                 <span id="mainTel"> <?php echo $user["telefone"][0]["telefone"] ?> </span>
+                <a href='controller.php?action=delete_contato&id=<?php echo $id; ?>'>[Apagar Contato]</a>
                 <img id="contactInfoBackGPhoto"
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxKZxvfZtHhz0N9M2g1qZDiTwF95L_mY2OoOIcP5zDOg&s=10">
             </div>

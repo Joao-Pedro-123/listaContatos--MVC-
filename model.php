@@ -15,6 +15,14 @@ $tabelas = [
 /// FUNÇÕES CRUD ///
 ////////////////////
 
+function delete_contato($id) {
+    delete('telefone', 'id_contato='. $id);
+    delete('rede_social', 'id_contato='. $id);
+    delete('email', 'id_contato='. $id);
+    delete('endereco', 'id_contato='. $id);
+    delete('contato', 'id_contato='. $id);
+    }
+
 # Essa mesma função vai servir para fazer insert em todas as colunas, baseado apenas no nome
 function create_contato($tabelas_add)
 {
