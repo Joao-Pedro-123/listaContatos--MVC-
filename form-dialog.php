@@ -181,5 +181,46 @@ $dialog_create_rede_social = '
 
     </dialog>
 ';
-?>
 
+$dialog_create_endereco = '
+<dialog id=enderecoPopupForm>
+        <h2>Novo Endereço</h2>
+
+        <form method="post" action="controller.php?action=novo_endereco&id='. (isset($id) ? $id : "")  .'">
+
+            <div id="inputs">
+                <div id="extraDialogInputs">
+                    <div id="extraDialogInputsAdress">
+                        <h3>Endereço</h3><br>
+                        <label for="logradouro"> Logradouro: </label>
+                        <input name="logradouro" type="text">
+
+                        <label for="numero"> Número: </label>
+                        <input name="numero" type="text">
+
+                        <label for="cidade"> Cidade: </label>
+                        <input name="cidade" type="text">
+
+                        <label for="cep"> CEP: </label>
+                        <input name="cep" type="text">
+
+                        <label for="complemento"> Complemento: </label>
+                        <input name="complemento" type="text">
+
+                        <label for="observacao"> Observação: </label>
+                        <input name="observacao" type="text">
+
+                        <label for="pontoref"> Ponto de Referência: </label>
+                        <input name="pontoref" type="text">
+                    </div> <br>
+                </div>
+            </div>
+
+            <div id="dialogActionButtons">
+                <input type="submit" onclick="submit()" value="Adicionar">
+            </div>
+        </form>
+
+    </dialog>
+';
+?>

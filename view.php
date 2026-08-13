@@ -14,6 +14,7 @@
     echo $dialog_create_telefone;
     echo $dialog_create_email;
     echo $dialog_create_rede_social;
+    echo $dialog_create_endereco;
     ?>
 
     <nav> <span> Olá, <b> User </b> </span> <span> <!-- Icone --> </span></nav>

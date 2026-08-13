@@ -15,7 +15,7 @@ if (isset($_GET['action'])) :
             print_r($_POST);
             echo "<hr>";
             
-            // sleep(5);
+            // redireciona para a página principal novamente
             header('Location: controller.php');
             break;
         
@@ -23,11 +23,12 @@ if (isset($_GET['action'])) :
             echo $_GET['id'];
             echo print_r($_POST);
 
+            // registra no banco
             if (isset($_POST['telefone'])) {
                 criar_novo_telefone($_GET['id'], $_POST);
             }
 
-            // sleep(5);
+            // redireciona para a página principal novamente
             header('Location: controller.php');
             break;
 
@@ -35,11 +36,12 @@ if (isset($_GET['action'])) :
             echo $_GET['id'];
             echo print_r($_POST);
 
+            // registra no banco
             if (isset($_POST['email'])) {
                 criar_novo_email($_GET['id'], $_POST);
             }
 
-            // sleep(5);
+            // redireciona para a página principal novamente
             header('Location: controller.php');
             break;
 
@@ -51,7 +53,20 @@ if (isset($_GET['action'])) :
                 criar_nova_rede_social($_GET['id'], $_POST);
             }
 
-            // sleep(5);
+            // redireciona para a página principal novamente
+            header('Location: controller.php');
+            break;
+
+        case 'novo_endereco':
+            echo $_GET['id'];
+            echo print_r($_POST);
+
+            // registra no banco
+            if (isset($_POST['logradouro'])) {
+                criar_novo_endereco($_GET['id'], $_POST);
+            }
+
+            // redireciona para a página principal novamente
             header('Location: controller.php');
             break;
     }
@@ -68,7 +83,4 @@ else:
     include "view.php";
 
 endif;
-
-
-
 ?>
