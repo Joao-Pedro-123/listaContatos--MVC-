@@ -48,7 +48,7 @@ if (isset($_GET["id"])) {
     <dialog id="popupForm">
         <h2>Titulo do dialog</h2>
 
-        <form method="post" action="#">
+        <form method="post" action="index.php">
 
             <div id="inputs">
                 <div id="mainDialogInputs">
@@ -66,68 +66,68 @@ if (isset($_GET["id"])) {
                     </div>
 
                     <div id="mainDialogInputsNumber">
-                        <label for="telefoneOne">Telefone: </label>
-                        <input name="telefoneOne" type="text" required> <br> <br>
+                        <label for="telefone">Telefone: </label>
+                        <input name="telefone" type="text" required> <br> <br>
                     </div>
                 </div>
                 <hr>
                 <div id="extraDialogInputs">
                     <div id="extraDialogInputsEmails">
-                        <label for="emailOne"> Email:</label>
-                        <input name="emailOne" type="email">
-
+                        <label for="email"> Email:</label>
+                        <input name="email" type="email">
+<!-- 
                         <label for="emailTwo"> Email: </label>
-                        <input name="emailTwo" type="email">
+                        <input name="emailTwo" type="email"> -->
                     </div> <br>
 
-                    <div id="extraDialogInputsNumbers">
+                    <!-- <div id="extraDialogInputsNumbers">
                         <label for="telefoneTwo"> Telefone 2:</label>
                         <input name="telefoneTwo" type="text">
 
                         <label for="telefoneThree"> Telefone 3: </label>
                         <input name="telefoneThree" type="text">
-                    </div> <br>
+                    </div> <br> -->
 
                     <div id="extraDialogInputsSocialM">
                         <div>
-                            <label for="redesocialOneName"> Rede Social 1:</label>
-                            <input name="redesocialOneName" type="text">
-
+                            <label for="nome_rede_social"> Rede Social 1:</label>
+                            <input name="nome_rede_social" type="text">
+<!-- 
                             <label for="redesocialTwoName"> Rede Social 2: </label>
-                            <input name="redesocialTwoName" type="text">
+                            <input name="redesocialTwoName" type="text"> -->
                         </div>
 
                         <div>
-                            <label for="redesocialOneLink"> Link 1: </label>
-                            <input name="redesocialOneLink" type="text">
+                            <label for="link"> Link 1: </label>
+                            <input name="link" type="text">
 
-
+<!-- 
                             <label for="redesocialTwoLink"> Link 2: </label>
-                            <input name="redesocialTwoLink" type="text">
+                            <input name="redesocialTwoLink" type="text"> -->
                         </div>
                     </div> <br>
 
                     <div id="extraDialogInputsAdress">
-                        <label for="logradouroOne"> Logradouro 1: </label>
-                        <input name="logradouroOne" type="text">
+                        <label for="logradouro"> Logradouro 1: </label>
+                        <input name="logradouro" type="text">
 
-                        <label for="numeroOne"> Número 1: </label>
-                        <input name="numeroOne" type="text">
+                        <label for="numero"> Número 1: </label>
+                        <input name="numero" type="text">
 
-                        <label for="cidadeOne"> Cidade 1: </label>
-                        <input name="cidadeOne" type="text">
+                        <label for="cidade"> Cidade 1: </label>
+                        <input name="cidade" type="text">
 
-                        <label for="cepOne"> CEP 1: </label>
-                        <input name="cepOne" type="text">
+                        <label for="cep"> CEP 1: </label>
+                        <input name="cep" type="text">
 
-                        <label for="complementoOne"> Complemento 1: </label>
-                        <input name="complementoOne" type="text">
+                        <label for="complemento"> Complemento 1: </label>
+                        <input name="complemento" type="text">
 
-                        <label for="observacaoOne"> Observação 1: </label>
-                        <input name="observacaoOne" type="text">
+                        <label for="obs"> Observação 1: </label>
+                        <input name="obs" type="text">
 
-                        <label for="pontorefOne"> Ponto de Referência 1: </label>
-                        <input name="pontorefOne" type="text">
+                        <label for="ponto_ref"> Ponto de Referência 1: </label>
+                        <input name="ponto_ref" type="text">
                     </div> <br>
                 </div>
             </div>

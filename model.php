@@ -16,29 +16,29 @@ $tabelas = [
 ////////////////////
 
 # Essa mesma função vai servir para fazer insert em todas as colunas, baseado apenas no nome
-function create_contato($tabelas_add)
+function prepare_data($tabelas_add)
 {
-    global $conexao; // Pega a variável definida no escopo global pelo include_once("conexao.php");
-    global $tabelas; // Pega a lookup table
-    $tabelas_consulta = [];
+
     $queryGroup = [];
-    # Pega as colunas da tabela usando a lookup table
 
-    foreach ($tabelas_add as $tabela_add) { //É necessário adaptar os números para não sair como texto no implode.
-        $colunas = [];
-        foreach ($tabela_add as $coluna_add) {
-            $colunas_add[] = $coluna_add;
-            $colunas = implode("`, `", $colunas_add);
-            foreach ($coluna_add as $valor_add) {
-                $valores_add[] = $valor_add;
-                $valores = implode("`, `", $valores_add);
-            }
+    foreach ($tabelas_add as $tabela => $dados) {
+        // Ignora tabelas que não possuem dados (valor 0)
+        if (!is_array($dados)) {
+            continue;
         }
-        $queryGroup[] = "INSERT INTO `$tabela_add` (`$colunas`) VALUES ('$valores');";
-    }
 
-    foreach ($colunas as $coluna) {
-        $colunasnew += $tabelas[$coluna];
+        $colunas_add = [];
+        $valores_add = [];
+
+        foreach ($dados as $coluna => $valor) {
+            $colunas_add[] = "`$coluna`";
+            $valores_add[] = "'" . addslashes($valor) . "'";
+        }
+
+        $colunas = implode(", ", $colunas_add);
+        $valores = implode(", ", $valores_add);
+
+        $queryGroup[] = "INSERT INTO `$tabela` ($colunas) VALUES ($valores);";
     }
 
     # Cerca cada um das colunas e valores com '' e ``
@@ -54,34 +54,39 @@ function create_contato($tabelas_add)
     // $resultado = @mysqli_query($conexao, $query);
 
     // # Só não sei como tratar do resultado
-    // return $resultado;
+    return $queryGroup;
 }
 
-function create($tabela, $valores)
+function create($valoresGroup)
 {
+    global $conexao;
 
-    global $conexao; // Pega a variável definida no escopo global pelo include_once("conexao.php");
-    global $tabelas; // Pega a lookup table
+    // Ativa o lançamento de exceções no MySQLi
+    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-    # Pega as colunas da tabela usando a lookup table
-    $colunas = $tabelas[$tabela];
+    try {
+        // Inicia a transação para garantir integridade dos dados
+        mysqli_begin_transaction($conexao);
 
-    # Cerca cada um das colunas e valores com '' e ``
-    $colunas = implode("`, `", $colunas);
-    $valores = implode("', '", $valores);
+        foreach ($valoresGroup as $sql) {
+            mysqli_query($conexao, $sql);
+        }
 
-    # Prepara a query dinamicamente
-    $query = "INSERT INTO `$tabela` (`$colunas`) VALUES ('$valores');";
+        // Se todas as inserções forem bem-sucedidas, confirma as alterações no banco
+        mysqli_commit($conexao);
 
-    echo $query;
+        return true;
+    } catch (mysqli_sql_exception $e) {
+        // Se alguma query falhar, desfaz todas as inserções realizadas na função
+        mysqli_rollback($conexao);
 
-    # Colocar try-catch aqui??
-    $resultado = @mysqli_query($conexao, $query);
+        // Registra o erro no log do servidor para depuração
+        error_log("Erro no cadastro SQL: " . $e->getMessage());
+        $erro = $e->getMessage();
 
-    # Só não sei como tratar do resultado
-    return $resultado;
+        return [false, $erro];
+    }
 }
-
 function read()
 {
     // Pega a variável definida no escopo global pelo include_once("conexao.php");

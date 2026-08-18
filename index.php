@@ -30,38 +30,54 @@ function getContacts()
 
 function verify_tables()
 {
-    $avaliable_colunas = array();
+    $avaliable_colunas = array(); 
     $avaliable_tabelas = array();
-
 
     global $tabelas;
 
-    foreach ($tabelas as $tabela) {
-        $valorfilled = 0;
-        foreach ($tabela as $coluna) {
-            if (empty($_POST[$coluna]) || !$_POST[$coluna]) {
-                continue;
+    foreach ($tabelas as $tabela => $colunas) { //Um loop que percorre todas as tabelas
+    $avaliable_colunas = [];    
+        foreach ($colunas as $coluna) { //Um loop que percorre todas as colunas
+            if (empty($_POST[$coluna]) || !$_POST[$coluna]) { //Verificando se o valor do $_POST não esta vazio ou null ou outra condição vazia
+                continue; //Caso o valor não seja utilizável o loop volta ao início 
             } else {
-                $avaliable_colunas[$coluna] = $_POST[$coluna];
-                $valorfilled++;
+               //Caso o valor seja utilizável, então, no array associativo o valor é adicionado e associado à coluna.
+                $avaliable_colunas[$coluna] = $_POST[$coluna]; 
             }
-
         }
 
-        if ($valorfilled === 0) {
+        if (empty($avaliable_colunas)) {//Caso o valorfilled seja 0, então, um zero será colocado no lugar de uma tabela que poderia estar ali
             $avaliable_tabelas[] = 0;
         } else {
-            foreach ($tabelas as $chosen) {
-                if ($chosen == $tabela) {
-                    $avaliable_tabelas[$tabela] = $avaliable_colunas;
-                }
-            }
+            $avaliable_tabelas[$tabela] = $avaliable_colunas; //Atribuição das colunas e seus valores em uma tabela
         }
-
-        $avaliable_colunas = [];
     }
     return $avaliable_tabelas;
 }
+
+function startInsert($avaliable)
+{
+    // Usa o parâmetro enviado ou chama a função caso não tenha sido passado
+    $dados = $avaliable ?? verify_tables();
+    // Interrompe se o array contiver apenas o valor 0 em todos os índices
+    foreach ($avaliable as $valor) {
+        if ($valor === 0) {
+            return false; // Interrompe a execução imediatamente
+        }
+    }
+
+    $queries = prepare_data($dados);
+    $sucesso = create($queries);
+
+    if ($sucesso[0]) {
+        echo "Cadastro realizado com sucesso!";
+    } else {
+        echo "Erro ao cadastrar no banco de dados.";
+        echo $sucesso[1];
+    }
+}
+
+startInsert(verify_tables());
 // $user = getContactData(1);
 // // $dados_user = $user["email"][0];
 // $dados_user = $user;
